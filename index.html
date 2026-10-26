@@ -1,3 +1,470 @@
+<!DOCTYPE html>
+<html lang="tr">
+<div class="page" id="hero">
+    <div class="page-inner">
+<div class="page" id="types">
+    <div class="page-inner">
+<div class="page" id="services">
+    <div class="page-inner">
+<div class="page" id="locations">
+    <div class="page-inner">
+<div class="page" id="github-search">
+    <div class="page-inner">
+<div class="page" id="lessons">
+    <div class="page-inner">
+<div class="page" id="risks">
+    <div class="page-inner">
+<div class="page" id="glossary">
+    <div class="page-inner">
+<div class="page" id="resources">
+    <div class="page-inner">
+<div class="page" id="quiz">
+    <div class="page-inner">
+<footer class="footer">
+    <div class="footer-inner">
+<div id="toast"></div>
+  <div id="progress-wrap"><div id="progress-bar"></div></div>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.body.setAttribute('data-theme', 'dark');
+    }
+    
+    themeBtn.addEventListener('click', () => {
+      const current = document.body.getAttribute('data-theme');
+      document.body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+      localStorage.setItem('theme', current === 'dark' ? 'light' : 'dark');
+      showToast(current === 'dark' ? 'Karanlık mod aktif' : 'Aydınlık mod aktif');
+    });
+    
+    // Progress bar
+    const progressBar = document.getElementById('progress-bar');
+    const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+    window.addEventListener('scroll', () => {
+      const scrollPer = window.pageYOffset / scrollTotal * 100;
+      progressBar.style.width = scrollPer + '%';
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        activePage = Math.min(activePage + 1, pages.length - 1);
+        window.scrollTo({ top: pages[activePage].offsetTop, behavior: 'smooth' });
+        updateDots();
+      }
+      if (e.key === 'ArrowLeft') {
+        activePage = Math.max(activePage - 1, 0);
+        window.scrollTo({ top: pages[activePage].offsetTop, behavior: 'smooth' });
+        updateDots();
+      }
+    });
+    
+    // Initialize dots
+    const pages = document.querySelectorAll('.page');
+    const dotNav = document.getElementById('dotNav');
+    let activePage = 0;
+    const dots = [];
+    pages.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot ' + (i === 0 ? 'active' : '');
+      dot.addEventListener('click', () => {
+        activePage = i;
+        window.scrollTo({ top: pages[i].offsetTop, behavior: 'smooth' });
+        updateDots();
+      });
+      dots.push(dot);
+    });
+    dotNav.append(...dots);
+    
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('searchResults');
+    
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      if (!term) {
+        searchResults.style.display = 'none';
+        return;
+      }
+      searchResults.innerHTML = '<p>Arama sonuçları için: <strong>"' + e.target.value + '"</strong></p>';
+      searchResults.style.display = 'block';
+    });
+    
+    // Toast notification
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.style.opacity = '1';
+      toast.style.transition = 'opacity 0.3s';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+      }, 3000);
+    }
+    
+    // Quiz results
+    function showResults() {
+      const answers = {
+        q1: document.querySelector('input[name="q1"]:checked')?.value,
+        q2: document.querySelector('input[name="q2"]:checked')?.value,
+        q3: document.querySelector('input[name="q3"]:checked')?.value
+      };
+      
+      let score = 0;
+      if (answers.q1 === 'a') score++;
+      if (answers.q2 === 'b') score++;
+      if (answers.q3 === 'a') score++;
+      
+      showToast('Test tamamlandı! ' + score + '/3 doğru');
+    }
+  </script>
+</body>
+</html>
+      <div class="logo"><span>☁️</span>CloudMed</div>
+      <p>Bulut bilişimi: paraşütcü gözünden | Modern rehber ve interaktif test</p>
+      <div class="social-links">
+        <a href="#" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.123.084.181l1.847-1.847A6.503 6.503 0 0 1 23 12c0 5.254-7.59 10.713-8.977 11.537.438.102.882.162.882.162s3.592-.059 5.433-.091a13.134 13.134 0 0 1 6.998-.592c7.798 1.5 14.032 6.086 14.032 11.536 0 6.633-5.438 12-12 12-2.866 0-5.682-.597-7.922-1.632-4.444.97.155.97.92 0 1.093-4.83-.248-9.164-4.284-9.164-4.284-.546-1.344-1.33-2.601-1.465-2.995-.087-.181-.37-.398-.88-.398-.255 0-.501.038-.73.121-1.07-.591-1.987-1.225-1.987-2.098 0-1.51.958-2.287 2.133-2.304-.727-.018-1.381-.065-2.005-.128 8.341.34 15.487 5.185 15.487 9.746 0 5.279-2.772 8.07-6.52 8.688-.192.108-.456.16-.75.16-1.595 0-3.064-.617-4.197-1.797-1.513.69.058 1.382.058 2.1 0 3.248-.315 6.118-1.088 6.118-3.217 0-4.034-1.637-4.034-3.747 0-1.088.212-1.856.555-2.453-1.12.066-.506.263-1.042.411-1.533 1.332-.697 2.445-1.833 2.445-3.375 0-1.397-.577-2.423-1.478-2.787.738-.185.829-.46 1.06-.838a7.568 7.568 0 0 1 1.455-1.313.733.733 0 0 1 1.088-.221 7.598 7.598 0 0 1 1.239-.688 7.515 7.515 0 0 1 .829-1.312 7.489 7.489 0 0 1 .557-1.075 7.471 7.471 0 0 1 .228-.54 7.419 7.419 0 0 1-.018-1.017 4.267 4.267 0 0 1 .15-1.088 4.038 4.038 0 0 1 .418-.317z" /></svg></a>
+        <a href="#" title="Twitter"><svg viewBox="0 0 24 24"><path d="M13.5 19.915l1.805 1.805.045.05L12 21.1l-2.145-2.146-.045-.05L9.5 19.915 7.355 17.77 9.14 15.91 11 12.73l1.695-1.695.045.05L12 15.61l2.145 2.146.045.05L14.5 19.915zM12 3L1.373 9.05.8 10.5h1.62L12 3zM12 4.75a8.25 8.25 0 1 1 0 16.5 8.25 8.25 0 0 1 0-16.5z" /></svg></a>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>🧠</span>Bitiş Testi</h2>
+      <p class="page-sub">Bulut bilişimi bilginizi test edin</p>
+      <div class="quiz-container">
+        <div class="quiz-card"><h3>Soru 1: IaaS ne anlama gelir?</h3><label><input type="radio" name="q1" value="a" class="radio-input" /> A) İnternet üzerinden alınan altyapı kaynakları</label><br /><label><input type="radio" name="q1" value="b" class="radio-input" /> B) Yazılım olarak bir hizmet</label><br /><label><input type="radio" name="q1" value="c" class="radio-input" /> C) Platform olarak bir hizmet</label><br /></div>
+        <div class="quiz-card"><h3>Soru 2: Cumulus bulutları hangi yüksekliğte bulunur?</h3><label><input type="radio" name="q2" value="a" class="radio-input" /> A) 0-2000 metre</label><br /><label><input type="radio" name="q2" value="b" class="radio-input" /> B) 1000-2000 metre</label><br /><label><input type="radio" name="q2" value="c" class="radio-input" /> C) 5000-13000 metre</label><br /></div>
+        <div class="quiz-card"><h3>Soru 3: Risk azaltım için en önemli kontrol hangisidir?</h3><label><input type="radio" name="q3" value="a" class="radio-input" /> A) MFA</label><br /><label><input type="radio" name="q3" value="b" class="radio-input" /> B) Yedekleme</label><br /><label><input type="radio" name="q3" value="c" class="radio-input" /> C) Monitoring</label><br /></div>
+        <button onclick="showResults()" class="btn-start">Sonuçları Göster</button>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>📦</span>Kaynaklar</h2>
+      <p class="page-sub">AWS, Microsoft Learn, Google Cloud, NIST, GitHub Topics</p>
+      <div class="resources-grid">
+        <div class="resource-card"><h3>AWS Learn</h3><p>Raporları, eğitim videoları ve sertifikasyon sürecini başlatın.</p><a href="https://aws.amazon.com/learn/" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>Microsoft Learn</h3><p>Bulut bilgi bankası, yol haritası ve beceri değerlendirmesi.</p><a href="https://learn.microsoft.com/" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>Google Cloud Docs</h3><p>Referans dokümantasyonları, hızlı başlangıç ve API rehberleri.</p><a href="https://cloud.google.com/docs" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>NIST SP 800-53</h3><p>Güvenlik ve gizlilik kontrol seti - bulut uyumluluğu için.</p><a href="https://www.nist.gov/publications/nist-sp-800-53" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>GitHub Topics</h3><p>Bulut bilişimi, DevOps ve siber güvenlik konularında repo'lar.</p><a href="https://github.com/topics/cloud-computing" target="_blank" class="btn-small">Git</a></div>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>📖</span>Glosaryo</h2>
+      <p class="page-sub">Türkçe ↔ English terimler</p>
+      <div class="glossary-table"><table><thead><tr><th>Türkçe</th><th>English</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td>Bulut Bilimi</td><td>Cloud Computing</td><td>Internet üzerinden paylaşılan kaynaklar</td></tr>
+          <tr><td>Paraşütçi</td><td>Paramedic</td><td>Acil servis professionalı</td></tr>
+          <tr><td>SLA</td><td>Service Level Agreement</td><td>Hizmet düzelİlmesi</td></tr>
+          <tr><td>RTO</td><td>Recovery Time Objective</td><td>Kurtarma süresi hedefi</td></tr>
+          <tr><td>RPO</td><td>Recovery Point Objective</td><td>Kurtarma noktası hedefi</td></tr>
+          <tr><td>PHI</td><td>Protected Health Information</td><td>Korunan sağlık bilgisi</td></tr>
+          <tr><td>Vendor Lock-in</td><td>Vendor Lock-in</td><td>Sadece bir sağlayıcıya bağımlılık</td></tr>
+        </tbody></table></div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>⚠️</span>Paraşütcü Riskleri</h2>
+      <p class="page-sub">8 risk alanı ve kontrol önerileri</p>
+      <div class="risks-grid">
+        <div class="risk-card"><span class="risk-number">1</span><h3>Hasta Verisi Sızıntısı</h3><p>PHI/PII koruması şifreleme ile, erişim kontrolü ile prev edilir.</p></div>
+        <div class="risk-card"><span class="risk-number">2</span><h3>HIPAA/GDPR Uyumsuzluğu</h3><p>Bulut sağlayıcının uyumluluk sertifikalarını doğrulayın ve doğru konumlandırma.</p></div>
+        <div class="risk-card"><span class="risk-number">3</span><h3>Platform Downtimesi</h3><p>Multi-region deployment ve fallback mekanizmalarını uygulayın.</p></div>
+        <div class="risk-card"><span class="risk-number">4</span><h3>Vendor Lock-in</h3><p>Ağnostik araçlar kullanın ve altyapı kodunun taşınabilir olmasını sağlayın.</p></div>
+        <div class="risk-card"><span class="risk-number">5</span><h3>Kimlik ve Şifre Sızıntısı</h3><p>MFA etkin, Secrets Management kullanın ve hardcoded credentialları önleyin.</p></div>
+        <div class="risk-card"><span class="risk-number">6</span><h3>Veri Konumlandırma</h3><p>Sınırlı veri yasal gereksinimlerini ve coğrafi sınırlamarı anlayın.</p></div>
+        <div class="risk-card"><span class="risk-number">7</span><h3>Ransomware + Yedek Arızası</h3><p>3-2-1 yedek stratejisi, immutable backups ve regular RTO/RPO testleri.</p></div>
+        <div class="risk-card"><span class="risk-number">8</span><h3>İnsan Faktörü</h3><p>Sahte e-posta eğitimi, kişisel cihaz politikası ve need-to-know erişim.</p></div>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>📚</span>Dersler</h2>
+      <p class="page-sub">5 temel bulut bilişimi ders</p>
+      <ul class="lessons-list">
+        <li><strong>Ders 1:</strong> Bulut Mimari Temelleri - Regions, Zones, Edge locations</li>
+        <li><strong>Ders 2:</strong> Güvenlik & Compliance - Şifreleme, IAM, Audit Logları</li>
+        <li><strong>Ders 3:</strong> Maliyet Optimizasyonu - Reserved, Spot, Savings Plans</li>
+        <li><strong>Ders 4:</strong> DevOps & CI/CD - Pipeline'lar, Automation</li>
+        <li><strong>Ders 5:</strong> Catastrophic Failure - RTO/RPO, Disaster Recovery</li>
+      </ul>
+    </div>
+  </div>
+      <h2 class="page-title"><span>🔍</span>GitHub'da Bulutları Bul</h2>
+      <p class="page-sub">Arama terimleri ve kaynaklar</p>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.3-4.3" /></svg>
+        <input id="search-input" type="text" placeholder="Bulut, AWS, risk, paraşütçi..." autocomplete="off" />
+      </div>
+      <div class="search-results" id="searchResults"></div>
+      <ul class="search-tips">
+        <li><code>cloud computing</code> - Genel bulut bilişimi konuları</li>
+        <li><code>AWS S3</code> - Depolama hizmetleri</li>
+        <li><code>Azure Virtual Network</code> - Ağ mimarileri</li>
+        <li><code>Kubernetes</code> - Container orchestration</li>
+      </ul>
+    </div>
+  </div>
+      <h2 class="page-title"><span>🌍</span>Nerde Çalışır?</h2>
+      <p class="page-sub">AWS Regions & Azure Regions & Google Cloud Regions</p>
+      <div class="locations-table">
+        <table>
+          <thead><tr><th>Sağlayıcı</th><th>Bölge</th><th>Data Center</th></tr></thead>
+          <tbody>
+            <tr><td>AWS</td><td>us-east-1 (N. Virginia)</td><td>12+ Availability Zones</td></tr>
+            <tr><td>Azure</td><td>East US</td><td>130+ Data Centers</td></tr>
+            <tr><td>Google Cloud</td><td>us-central1 (Iowa)</td><td>15+ Regions Worldwide</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>🖥️</span>Servis Modelleri</h2>
+      <p class="page-sub">IaaS, PaaS, SaaS, FaaS, DBaaS</p>
+      <div class="services-grid">
+        <div class="service-card"><div class="badge">IaaS</div><h3>Infrastructure as a Service</h3><p>Virtualized computing resources over the internet. Pay-as-you-go storage, networking, and servers.</p></div>
+        <div class="service-card"><div class="badge">PaaS</div><h3>Platform as a Service</h3><p>Hardware and software tools available over internet, typically for application development.</p></div>
+        <div class="service-card"><div class="badge">SaaS</div><h3>Software as a Service</h3><p>Software distribution model where a third-party provider hosts applications and makes them available to users.</p></div>
+        <div class="service-card"><div class="badge">FaaS</div><h3>Function as a Service</h3><p>Serverless computing model that runs code in response to events without permanently running server processes.</p></div>
+        <div class="service-card"><div class="badge">DBaaS</div><h3>Database as a Service</h3><p>Cloud-based service taking over some or all of the data management functions.</p></div>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>☁️</span>Bulut Türleri</h2>
+      <p class="page-sub">Meteorolojik sınıflandırmalar ve altitude bands</p>
+      <div class="cloud-grid">
+        <div class="card"><span class="cloud-type">🟡</span><div class="card-body"><h3>Cumulus</h3><p>Düşük, beyaz ve mühürler simili. Gün ısıgında gelişen, ince çizgili bulutlar. 1000-2000 metre yükseklikte.</p></div></div>
+        <div class="card"><span class="cloud-type">🟢</span><div class="card-body"><h3>Cirrus</h3><p>Yüksek, ince ve fıstık benzeri. Yüksek atmosferde gelişen, ince siyah-lacivert bulutlar. 5000-13000 metre yükseklikte.</p></div></div>
+        <div class="card"><span class="cloud-type">🔵</span><div class="card-body"><h3>Stratus</h3><p>Düzenli gri birörtü. Dünya çatıya yayılmış, gri renli bir bulut tipi. 0-2000 metre yükseklikte.</p></div></div>
+      </div>
+      <div class="altitude-band">
+        <div class="alt-band alt-low">Düşük (0-2000m)</div>
+        <div class="alt-band alt-mid">Orta (2000-5000m)</div>
+        <div class="alt-band alt-high">Yüksek (5000m+)</div>
+      </div>
+    </div>
+  </div>
+      <h1>☁️ CloudMed</h1>
+      <p class="lead">Bulut bilişimi: paraşütcü gözünden. Modern araçlarla etkileşimli bir rehber. Yatayca kaydırarak bölümleri gezebilirsiniz.</p>
+      <div class="stats">
+        <div class="stat"><b>9</b><span>Bölüm</span></div>
+        <div class="stat"><b>10</b><span>Konu</span></div>
+        <div class="stat"><b>8+</b><span>Risk</span></div>
+        <div class="stat"><b>TR + EN</b><span>Dil İkili</span></div>
+      </div>
+      <a href="#types" class="jump-cta"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" /></svg> Başla</a>
+    </div>
+  </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudMed | Modern Bulut Bilişimi & Paraşütcü Rehberi</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudMed | Modern Bulut Bilişimi & Paraşütcü Rehberi</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="page" id="hero">
+    <div class="page-inner">
+      <h1>☁️ CloudMed</h1>
+      <p class="lead">Bulut bilişimi: paraşütcü gözünden. Modern araçlarla etkileşimli bir rehber. Yatayca kaydırarak bölümleri gezebilirsiniz.</p>
+      <div class="stats">
+        <div class="stat"><b>9</b><span>Bölüm</span></div>
+        <div class="stat"><b>10</b><span>Konu</span></div>
+        <div class="stat"><b>8+</b><span>Risk</span></div>
+        <div class="stat"><b>TR + EN</b><span>Dil İkili</span></div>
+      </div>
+      <a href="#types" class="jump-cta"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" /></svg> Başla</a>
+    </div>
+  </div>
+<html lang="tr">
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CloudMed | Modern Bulut Bilişimi & Paraşütcü Rehberi</title>
+  <link rel="stylesheet" href="css/styles.css" />
+<body>
+  <div class="page" id="hero">
+<section id="types" class="types-section">
+      <div class="section-header">
+<div class="page" id="services">
+    <div class="page-inner">
+<div class="page" id="locations">
+    <div class="page-inner">
+<div class="page" id="github-search">
+    <div class="page-inner">
+<div class="page" id="lessons">
+    <div class="page-inner">
+<div class="page" id="risks">
+    <div class="page-inner">
+<div class="page" id="glossary">
+    <div class="page-inner">
+<div class="page" id="resources">
+    <div class="page-inner">
+<div class="page" id="quiz">
+    <div class="page-inner">
+<footer class="footer">
+    <div class="footer-inner">
+      <div class="logo"><span>☁️</span>CloudMed</div>
+      <p>Bulut bilişimi: paraşütcü gözünden | Modern rehber ve interaktif test</p>
+      <div class="social-links">
+        <a href="#" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.123.084.181l1.847-1.847A6.503 6.503 0 0 1 23 12c0 5.254-7.59 10.713-8.977 11.537.438.102.882.162.882.162s3.592-.059 5.433-.091a13.134 13.134 0 0 1 6.998-.592c7.798 1.5 14.032 6.086 14.032 11.536 0 6.633-5.438 12-12 12-2.866 0-5.682-.597-7.922-1.632-4.444.97.155.97.92 0 1.093-4.83-.248-9.164-4.284-9.164-4.284-.546-1.344-1.33-2.601-1.465-2.995-.087-.181-.37-.398-.88-.398-.255 0-.501.038-.73.121-1.07-.591-1.987-1.225-1.987-2.098 0-1.51.958-2.287 2.133-2.304-.727-.018-1.381-.065-2.005-.128 8.341.34 15.487 5.185 15.487 9.746 0 5.279-2.772 8.07-6.52 8.688-.192.108-.456.16-.75.16-1.595 0-3.064-.617-4.197-1.797-1.513.69.058 1.382.058 2.1 0 3.248-.315 6.118-1.088 6.118-3.217 0-4.034-1.637-4.034-3.747 0-1.088.212-1.856.555-2.453-1.12.066-.506.263-1.042.411-1.533 1.332-.697 2.445-1.833 2.445-3.375 0-1.397-.577-2.423-1.478-2.787.738-.185.829-.46 1.06-.838a7.568 7.568 0 0 1 1.455-1.313.733.733 0 0 1 1.088-.221 7.598 7.598 0 0 1 1.239-.688 7.515 7.515 0 0 1 .829-1.312 7.489 7.489 0 0 1 .557-1.075 7.471 7.471 0 0 1 .228-.54 7.419 7.419 0 0 1-.018-1.017 4.267 4.267 0 0 1 .15-1.088 4.038 4.038 0 0 1 .418-.317z" /></svg></a>
+        <a href="#" title="Twitter"><svg viewBox="0 0 24 24"><path d="M13.5 19.915l1.805 1.805.045.05L12 21.1l-2.145-2.146-.045-.05L9.5 19.915 7.355 17.77 9.14 15.91 11 12.73l1.695-1.695.045.05L12 15.61l2.145 2.146.045.05L14.5 19.915zM12 3L1.373 9.05.8 10.5h1.62L12 3zM12 4.75a8.25 8.25 0 1 1 0 16.5 8.25 8.25 0 0 1 0-16.5z" /></svg></a>
+      </div>
+    </div>
+  </footer>
+      <h2 class="page-title"><span>🧠</span>Bitiş Testi</h2>
+      <p class="page-sub">Bulut bilişimi bilginizi test edin</p>
+      <div class="quiz-container">
+        <div class="quiz-card"><h3>Soru 1: IaaS ne anlama gelir?</h3><label><input type="radio" name="q1" value="a" class="radio-input" /> A) İnternet üzerinden alınan altyapı kaynakları</label><br /><label><input type="radio" name="q1" value="b" class="radio-input" /> B) Yazılım olarak bir hizmet</label><br /><label><input type="radio" name="q1" value="c" class="radio-input" /> C) Platform olarak bir hizmet</label><br /></div>
+        <div class="quiz-card"><h3>Soru 2: Cumulus bulutları hangi yüksekliğte bulunur?</h3><label><input type="radio" name="q2" value="a" class="radio-input" /> A) 0-2000 metre</label><br /><label><input type="radio" name="q2" value="b" class="radio-input" /> B) 1000-2000 metre</label><br /><label><input type="radio" name="q2" value="c" class="radio-input" /> C) 5000-13000 metre</label><br /></div>
+        <div class="quiz-card"><h3>Soru 3: Risk azaltım için en önemli kontrol hangisidir?</h3><label><input type="radio" name="q3" value="a" class="radio-input" /> A) MFA</label><br /><label><input type="radio" name="q3" value="b" class="radio-input" /> B) Yedekleme</label><br /><label><input type="radio" name="q3" value="c" class="radio-input" /> C) Monitoring</label><br /></div>
+        <button onclick="showResults()" class="btn-start">Sonuçları Göster</button>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>📦</span>Kaynaklar</h2>
+      <p class="page-sub">AWS, Microsoft Learn, Google Cloud, NIST, GitHub Topics</p>
+      <div class="resources-grid">
+        <div class="resource-card"><h3>AWS Learn</h3><p>Raporları, eğitim videoları ve sertifikasyon sürecini başlatın.</p><a href="https://aws.amazon.com/learn/" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>Microsoft Learn</h3><p>Bulut bilgi bankası, yol haritası ve beceri değerlendirmesi.</p><a href="https://learn.microsoft.com/" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>Google Cloud Docs</h3><p>Referans dokümantasyonları, hızlı başlangıç ve API rehberleri.</p><a href="https://cloud.google.com/docs" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>NIST SP 800-53</h3><p>Güvenlik ve gizlilik kontrol seti - bulut uyumluluğu için.</p><a href="https://www.nist.gov/publications/nist-sp-800-53" target="_blank" class="btn-small">Git</a></div>
+        <div class="resource-card"><h3>GitHub Topics</h3><p>Bulut bilişimi, DevOps ve siber güvenlik konularında repo'lar.</p><a href="https://github.com/topics/cloud-computing" target="_blank" class="btn-small">Git</a></div>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>📖</span>Glosaryo</h2>
+      <p class="page-sub">Türkçe ↔ English terimler</p>
+      <div class="glossary-table">
+        <table>
+          <thead><tr><th>Türkçe</th><th>English</th><th>Açıklama</th></tr></thead>
+          <tbody>
+            <tr><td>Bulut Bilimi</td><td>Cloud Computing</td><td>Internet üzerinden paylaşılan kaynaklar</td></tr>
+            <tr><td>Paraşütçi</td><td>Paramedic</td><td>Acil servis professionalı</td></tr>
+            <tr><td>SLA</td><td>Service Level Agreement</td><td>Hizmet düzey sözleşmesi</td></tr>
+            <tr><td>RTO</td><td>Recovery Time Objective</td><td>Kurtarma süresi hedefi</td></tr>
+            <tr><td>RPO</td><td>Recovery Point Objective</td><td>Kurtarma noktası hedefi</td></tr>
+            <tr><td>PHI</td><td>Protected Health Information</td><td>Korunan sağlık bilgisi</td></tr>
+            <tr><td>Vendor Lock-in</td><td>Vendor Lock-in</td><td>Sadece bir sağlayıcıya bağımlılık</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>⚠️</span>Paraşütcü Riskleri</h2>
+      <p class="page-sub">8 risk alanı ve kontrol önerileri</p>
+      <div class="risks-grid">
+        <div class="risk-card"><span class="risk-number">1</span><h3>Hasta Verisi Sızıntısı</h3><p>PHI/PII koruması şifreleme ile, erişim kontrolü ile prev edilir.</p></div>
+        <div class="risk-card"><span class="risk-number">2</span><h3>HIPAA/GDPR Uyumsuzluğu</h3><p>Bulut sağlayıcının uyumluluk sertifikalarını doğrulayın ve doğru konumlandırma.</p></div>
+        <div class="risk-card"><span class="risk-number">3</span><h3>Platform Downtimesi</h3><p>Multi-region deployment ve fallback mekanizmalarını uygulayın.</p></div>
+        <div class="risk-card"><span class="risk-number">4</span><h3>Vendor Lock-in</h3><p>Ağnostik araçlar kullanın ve altyapı kodunun taşınabilir olmasını sağlayın.</p></div>
+        <div class="risk-card"><span class="risk-number">5</span><h3>Kimlik ve Şifre Sızıntısı</h3><p>MFA etkin, Secrets Management kullanın ve hardcoded credentialları önleyin.</p></div>
+        <div class="risk-card"><span class="risk-number">6</span><h3>Veri Konumlandırma</h3><p>Sınırlı veri yasal gereksinimlerini ve coğrafi sınırlamarı anlayın.</p></div>
+        <div class="risk-card"><span class="risk-number">7</span><h3>Ransomware + Yedek Arızası</h3><p>3-2-1 yedek stratejisi, immutable backups ve regular RTO/RPO testleri.</p></div>
+        <div class="risk-card"><span class="risk-number">8</span><h3>İnsan Faktörü</h3><p>Sahte e-posta eğitimi, kişisel cihaz politikası ve need-to-know erişim.</p></div>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>📚</span>Dersler</h2>
+      <p class="page-sub">5 temel bulut bilişimi ders</p>
+      <ul class="lessons-list">
+        <li><strong>Ders 1:</strong> Bulut Mimari Temelleri - Regions, Zones, Edge locations</li>
+        <li><strong>Ders 2:</strong> Güvenlik & Compliance - Şifreleme, IAM, Audit Logları</li>
+        <li><strong>Ders 3:</strong> Maliyet Optimizasyonu - Reserved, Spot, Savings Plans</li>
+        <li><strong>Ders 4:</strong> DevOps & CI/CD - Pipeline'lar, Automation</li>
+        <li><strong>Ders 5:</strong> Catastrophic Failure - RTO/RPO, Disaster Recovery</li>
+      </ul>
+    </div>
+  </div>
+      <h2 class="page-title"><span>🔍</span>GitHub'da Bulutları Bul</h2>
+      <p class="page-sub">Arama terimleri ve kaynaklar</p>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.3-4.3" /></svg>
+        <input id="search-input" type="text" placeholder="Bulut, AWS, risk, paraşütçi..." autocomplete="off" />
+      </div>
+      <div class="search-results" id="searchResults"></div>
+      <ul class="search-tips">
+        <li><code>cloud computing</code> - Genel bulut bilişimi konuları</li>
+        <li><code>AWS S3</code> - Depolama hizmetleri</li>
+        <li><code>Azure Virtual Network</code> - Ağ mimarileri</li>
+        <li><code>Kubernetes</code> - Container orchestration</li>
+      </ul>
+    </div>
+  </div>
+      <h2 class="page-title"><span>🌍</span>Nerde Çalışır?</h2>
+      <p class="page-sub">AWS Regions & Azure Regions & Google Cloud Regions</p>
+      <div class="locations-table">
+        <table>
+          <thead>
+            <tr><th>Sağlayıcı</th><th>Bölge</th><th>Data Center</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>AWS</td><td>us-east-1 (N. Virginia)</td><td>12+ Availability Zones</td></tr>
+            <tr><td>Azure</td><td>East US</td><td>130+ Data Centers</td></tr>
+            <tr><td>Google Cloud</td><td>us-central1 (Iowa)</td><td>15+ Regions Worldwide</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+      <h2 class="page-title"><span>🖥️</span>Servis Modelleri</h2>
+      <p class="page-sub">IaaS, PaaS, SaaS, FaaS, DBaaS</p>
+      <div class="services-grid">
+        <div class="service-card"><div class="badge">IaaS</div><h3>Infrastructure as a Service</h3><p>Virtualized computing resources over the internet. Pay-as-you-go storage, networking, and servers.</p></div>
+        <div class="service-card"><div class="badge">PaaS</div><h3>Platform as a Service</h3><p>Hardware and software tools available over internet, typically for application development.</p></div>
+        <div class="service-card"><div class="badge">SaaS</div><h3>Software as a Service</h3><p>Software distribution model where a third-party provider hosts applications and makes them available to users.</p></div>
+        <div class="service-card"><div class="badge">FaaS</div><h3>Function as a Service</h3><p>Serverless computing model that runs code in response to events without permanently running server processes.</p></div>
+        <div class="service-card"><div class="badge">DBaaS</div><h3>Database as a Service</h3><p>Cloud-based service taking over some or all of the data management functions.</p></div>
+      </div>
+    </div>
+  </div>
+        <h2>☁️ Bulut Türleri</h2>
+        <p>Meteorolojik sınıflandırmalar ve altitude bands</p>
+      </div>
+      <div class="cloud-grid">
+        <div class="card"><span class="cloud-type">🟡</span><div class="card-body"><h3>Cumulus</h3><p>Düşük, beyaz ve mühürler simili. Gün ısıgında gelişen, ince çizgili bulutlar. 1000-2000 metre yükseklikte.</p></div></div>
+        <div class="card"><span class="cloud-type">🟢</span><div class="card-body"><h3>Cirrus</h3><p>Yüksek, ince ve fıstık benzeri. Yüksek atmosferde gelişen, ince siyah-lacivert bulutlar. 5000-13000 metre yükseklikte.</p></div></div>
+        <div class="card"><span class="cloud-type">🔵</span><div class="card-body"><h3>Stratus</h3><p>Düzenli gri birörtü. Dünya çatıya yayılmış, gri renli bir bulut tipi. 0-2000 metre yükseklikte.</p></div></div>
+      </div>
+      <div class="altitude-band">
+        <div class="alt-band alt-low">Düşük (0-2000m)</div>
+        <div class="alt-band alt-mid">Orta (2000-5000m)</div>
+        <div class="alt-band alt-high">Yüksek (5000m+)</div>
+      </div>
+    </div>
+  </section>
+    <div class="page-inner">
+      <h1>☁️ CloudMed</h1>
+      <p class="lead">Bulut bilişimi: paraşütcü gözünden. Modern araçlarla etkileşimli bir rehber. Yatayca kaydırarak bölümleri gezebilirsiniz.</p>
+      <div class="stats">
+        <div class="stat"><b>9</b><span>Bölüm</span></div>
+        <div class="stat"><b>10</b><span>Konu</span></div>
+        <div class="stat"><b>8+</b><span>Risk</span></div>
+        <div class="stat"><b>TR + EN</b><span>Dil İkili</span></div>
+      </div>
+      <a href="#types" class="jump-cta"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" /></svg> Başla</a>
+    </div>
+  </div>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudMed | Modern Bulut Bilişimi & Paraşütcü Rehberi</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
 
 <html lang="tr">
 <head>
