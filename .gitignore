@@ -1,0 +1,19 @@
+# Ignore temporary or OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Local environment / secrets (never commit real secrets)
+.env
+.env.*
+*.pfx
+*.key
+*.pem
+credentials.json
+config.local.json
+
+# OS / IDE leftovers
+.idea/
+.vscode/
+*.user
+*.swp
