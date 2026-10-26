@@ -3,75 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CloudMed — Bulut Bilişim Rehberi</title>
+  <title>CloudMed — Interactive Cloud Atlas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#0b1020; --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.12); --text:#e8ecf8; --muted:#a7b0d6; --primary:#6ea8fe; --accent:#7c5cff; --success:#3dd598; --radius:16px; --shadow:0 10px 40px rgba(0,0,0,.35); }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:'Inter',system-ui,sans-serif;background:radial-gradient(1200px 600px at 10% -10%,#1b2a5a 0%,transparent 60%),radial-gradient(900px 500px at 90% 10%,#3a1f6b 0%,transparent 55%),var(--bg);color:var(--text);line-height:1.6}
-    .container{width:min(1120px,92%);margin:0 auto}
-    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(11,16,32,.7);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
-    .brand{color:var(--text);text-decoration:none;font-weight:800;font-size:1.1rem}
-    .nav-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:6px 10px;cursor:pointer}
-    .nav-links{display:flex;gap:14px;flex-wrap:wrap}
-    .nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem;transition:color .2s}
+    :root { --bg:#07111f; --panel:rgba(255,255,255,.07); --border:rgba(255,255,255,.14); --text:#eaf0ff; --muted:#9fb0dd; --primary:#66b3ff; --accent:#8b6cff; --success:#45d49a; --radius:18px; --shadow:0 16px 50px rgba(0,0,0,.45); }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:'Inter',system-ui,sans-serif;background:linear-gradient(180deg,#07111f 0%,#0b1b35 45%,#0a1022 100%);color:var(--text);line-height:1.6}
+    .container{width:min(1200px,94%);margin:0 auto}
+    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(7,17,31,.72);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;flex-wrap:wrap}
+    .brand{color:var(--text);text-decoration:none;font-weight:800;font-size:1.15rem}
+    .nav-links{display:flex;gap:12px;flex-wrap:wrap}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
     .nav-links a:hover{color:var(--primary)}
-    .hero{padding:80px 0 60px;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-    .eyebrow{color:var(--primary);font-weight:600;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
-    .hero h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;margin:12px 0 16px}
-    .gradient-text{background:linear-gradient(120deg,var(--primary),var(--accent),var(--success));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero p{color:var(--muted);max-width:58ch}
-    .hero-actions{display:flex;gap:12px;margin-top:24px}
-    .btn{display:inline-block;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:600;transition:transform .2s,box-shadow .2s}
+    .hero{padding:90px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+    .eyebrow{color:var(--primary);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase}
+    h1{font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.1;margin:12px 0 16px}
+    .gradient{background:linear-gradient(120deg,var(--primary),var(--accent),var(--success));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);max-width:60ch}
+    .btn{display:inline-block;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:700;transition:transform .2s}
     .btn:hover{transform:translateY(-2px)}
-    .btn.primary{background:linear-gradient(120deg,var(--primary),var(--accent));color:#0b1020;box-shadow:0 8px 24px rgba(110,168,254,.35)}
+    .btn.primary{background:linear-gradient(120deg,var(--primary),var(--accent));color:#07111f}
     .btn.ghost{border:1px solid var(--border);color:var(--text)}
-    .hero-visual{position:relative;min-height:260px;display:grid;place-items:center}
-    .orb{width:220px;height:220px;border-radius:50%;background:conic-gradient(from 0deg,var(--primary),var(--accent),var(--success),var(--primary));filter:blur(2px);opacity:.85;animation:spin 12s linear infinite;box-shadow:0 0 60px rgba(124,92,255,.45)}
-    .stat-card{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;backdrop-filter:blur(8px);box-shadow:var(--shadow);text-align:center}
-    .stat-card:nth-child(2){top:10px;right:10px}
-    .stat-card:nth-child(3){bottom:10px;left:10px}
-    .stat-card:nth-child(4){top:50%;left:50%;transform:translate(-50%,-50%)}
-    .stat-card strong{display:block;font-size:1.6rem}
-    .stat-card span{color:var(--muted);font-size:.85rem}
-    .section{padding:70px 0}
+    .hero-actions{display:flex;gap:12px;margin-top:24px}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;backdrop-filter:blur(8px);box-shadow:var(--shadow)}
+    .simulator{position:relative;min-height:360px;overflow:hidden}
+    .mountain{position:absolute;bottom:0;left:0;width:100%;height:70%}
+    .cloud{position:absolute;border-radius:50%;background:rgba(255,255,255,.85);filter:blur(2px);transition:opacity .4s,transform .4s}
+    .c1{width:150px;height:60px;top:72%;left:8%}
+    .c2{width:220px;height:70px;top:58%;left:34%}
+    .c3{width:180px;height:55px;top:38%;left:62%}
+    .c4{width:120px;height:45px;top:24%;left:18%}
+    .slider-row{display:flex;align-items:center;gap:14px;margin-top:16px}
+    input[type=range]{flex:1}
+    .altitude-value{font-weight:800;color:var(--primary);min-width:90px}
+    .cloud-info{margin-top:14px;color:var(--muted)}
+    .section{padding:76px 0}
     .section.alt{background:rgba(255,255,255,.02);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .section-title{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 16px}
-    .lead{color:var(--muted);max-width:70ch;margin-bottom:28px}
-    .feature-grid,.card-grid,.provider-grid{display:grid;gap:16px}
-    .feature-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .card-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .provider-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;backdrop-filter:blur(6px);transition:transform .25s,border-color .25s}
-    .card:hover{transform:translateY(-4px);border-color:rgba(110,168,254,.4)}
-    .card h3{margin:0 0 8px;font-size:1.05rem}
-    .card p{margin:0;color:var(--muted);font-size:.95rem}
+    .title{font-size:clamp(1.7rem,3vw,2.4rem);margin:0 0 14px}
+    .lead{color:var(--muted);max-width:74ch;margin-bottom:26px}
+    .grid{display:grid;gap:16px}
+    .grid-3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .grid-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:transform .25s,border-color .25s}
+    .card:hover{transform:translateY(-4px);border-color:rgba(102,179,255,.45)}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0;color:var(--muted)}
     .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
-    table{width:100%;border-collapse:collapse;background:var(--card)}
+    table{width:100%;border-collapse:collapse;background:var(--panel)}
     th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
-    th{background:rgba(255,255,255,.04);color:var(--primary);font-weight:600}
+    th{background:rgba(255,255,255,.04);color:var(--primary)}
     tr:last-child td{border-bottom:none}
     .checklist{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:8px}
-    .checklist li{padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--muted)}
+    .checklist li{padding:10px 14px;background:var(--panel);border:1px solid var(--border);border-radius:12px;color:var(--muted)}
     .checklist li::before{content:"✓ ";color:var(--success);font-weight:700}
-    .resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-    .resource-card{padding:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;text-align:center;transition:transform .2s,border-color .2s}
-    .resource-card:hover{transform:translateY(-3px);border-color:var(--primary)}
-    .site-footer{padding:24px 0;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem}
+    .resources{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .resource{padding:16px;background:var(--panel);border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;text-align:center;transition:transform .2s,border-color .2s}
+    .resource:hover{transform:translateY(-3px);border-color:var(--primary)}
+    footer{padding:24px 0;border-top:1px solid var(--border);color:var(--muted)}
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
     .reveal.visible{opacity:1;transform:translateY(0)}
     @keyframes spin{to{transform:rotate(360deg)}}
-    @media (max-width:820px){.hero-grid{grid-template-columns:1fr}.nav-toggle{display:inline-block}.nav-links{display:none;flex-direction:column;width:100%;padding:10px 0}.nav-links.open{display:flex}.nav{flex-wrap:wrap}}
+    @media (max-width:860px){.hero-grid{grid-template-columns:1fr}.nav-links{display:none;width:100%}.nav-links.open{display:flex}}
   </style>
 </head>
 <body>
-  <header class="site-header">
+  <header>
     <div class="container nav">
-      <a class="brand" href="#top">☁️ CloudMed</a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Menü">☰</button>
-      <nav id="navList" class="nav-links">
+      <a class="brand" href="#top">☁️ CloudMed Atlas</a>
+      <nav class="nav-links" id="nav">
         <a href="#about">Nedir?</a>
+        <a href="#simulator">Simülatör</a>
         <a href="#services">Servisler</a>
         <a href="#deployment">Dağıtım</a>
         <a href="#providers">Sağlayıcılar</a>
@@ -86,41 +88,66 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <span class="eyebrow">Sağlık ve acil servis ekipleri için</span>
-          <h1>Bulut bilişimi <span class="gradient-text">güvenli ve anlaşılır</span> hale getirin</h1>
-          <p>Cloud computing; ağ üzerinden isteğe bağlı, ölçülebilir ve elastik kaynak sunumudur. Bu rehber; servis modellerini, dağıtım türlerini, sağlayıcı konumlarını, güvenlik sorumluluklarını, yedekleme ve maliyet optimizasyonunu tek yerde toplar.</p>
+        <div class="reveal">
+          <span class="eyebrow">Interactive Cloud Atlas</span>
+          <h1>Bulutları <span class="gradient">rakıma göre</span> keşfedin</h1>
+          <p>Gerçek bulut türlerini, servis modellerini ve güvenlik prensiplerini tek bir profesyonel arayüzde öğrenin. Rakım simülatörü ile stratus, cumulus ve cirrus bulutlarının hangi yükseklikte oluştuğunu görün.</p>
           <div class="hero-actions">
-            <a class="btn primary" href="#about">Başla</a>
-            <a class="btn ghost" href="#resources">Kaynaklar</a>
+            <a class="btn primary" href="#simulator">Simülatörü Aç</a>
+            <a class="btn ghost" href="#about">Başla</a>
           </div>
         </div>
-        <div class="hero-visual reveal">
-          <div class="orb"></div>
-          <div class="stat-card"><strong>5</strong><span>Temel özellik</span></div>
-          <div class="stat-card"><strong>6</strong><span>Servis modeli</span></div>
-          <div class="stat-card"><strong>4</strong><span>Dağıtım modeli</span></div>
+        <div class="panel simulator reveal">
+          <svg class="mountain" viewBox="0 0 1000 400" preserveAspectRatio="none">
+            <polygon points="0,400 180,260 320,300 500,150 680,280 820,220 1000,400" fill="#1a2f55" />
+            <polygon points="0,400 200,300 420,340 620,220 760,300 1000,400" fill="#122344" opacity=".7" />
+          </svg>
+          <div class="cloud c1"></div>
+          <div class="cloud c2"></div>
+          <div class="cloud c3"></div>
+          <div class="cloud c4"></div>
+          <div style="position:absolute;bottom:16px;left:16px;right:16px">
+            <div class="slider-row">
+              <label for="alt">Rakım</label>
+              <input id="alt" type="range" min="0" max="12000" value="1200" />
+              <span class="altitude-value" id="altVal">1200 m</span>
+            </div>
+            <div class="cloud-info" id="cloudInfo">Stratus ve cumulus bulutları bu rakımda görülebilir.</div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title reveal">Bulut bilişimi nedir?</h2>
-        <p class="lead reveal">NIST tanımına göre cloud computing; ağ üzerinden paylaşılan ve yapılandırılabilir kaynakların (ağ, sunucu, depolama, uygulama, servis) isteğe bağlı, hızlı ve ölçülebilir şekilde sunulmasıdır.</p>
-        <div class="feature-grid">
-          <article class="card reveal"><h3>İsteğe bağlı self-servis</h3><p>Kullanıcı, sağlayıcıyla etkileşime girmeden kaynak talep eder ve anında alır.</p></article>
-          <article class="card reveal"><h3>Geniş ağ erişimi</h3><p>Kaynaklar standart mekanizmalarla farklı cihazlardan erişilebilir.</p></article>
-          <article class="card reveal"><h3>Kaynak havuzu</h3><p>Kaynaklar çok kiracılı havuzda dinamik olarak atanır.</p></article>
-          <article class="card reveal"><h3>Hızlı elastikiyet</h3><p>İhtiyaca göre hızla ölçeklenir, azalır; kullanım ölçülebilir.</p></article>
-          <article class="card reveal"><h3>Ölçülebilir servis</h3><p>Kullanım izlenir, raporlanır ve şeffaf şekilde faturalandırılır.</p></article>
+        <h2 class="title reveal">Bulut bilişimi nedir?</h2>
+        <p class="lead reveal">NIST tanımına göre cloud computing; ağ üzerinden paylaşılan ve yapılandırılabilir kaynakların isteğe bağlı, hızlı ve ölçülebilir şekilde sunulmasıdır.</p>
+        <div class="grid grid-4">
+          <article class="card reveal"><h3>Self-servis</h3><p>Kullanıcı sağlayıcıyla etkileşime girmeden kaynak talep eder.</p></article>
+          <article class="card reveal"><h3>Ağ erişimi</h3><p>Farklı cihazlardan standart mekanizmalarla erişim.</p></article>
+          <article class="card reveal"><h3>Kaynak havuzu</h3><p>Çok kiracılı havuzda dinamik atama.</p></article>
+          <article class="card reveal"><h3>Elastikiyet</h3><p>İhtiyaca göre ölçeklenir ve azalır.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="services" class="section alt">
+    <section id="simulator" class="section alt">
       <div class="container">
-        <h2 class="section-title reveal">Servis modelleri</h2>
+        <h2 class="title reveal">Bulut rakım simülatörü</h2>
+        <p class="lead reveal">Rakımı değiştirerek hangi bulut türünün o yükseklikte oluşabileceğini gözlemleyin.</p>
+        <div class="panel reveal">
+          <div class="grid grid-3">
+            <article class="card"><h3>Stratus</h3><p>0–2000 m: düşük, gri tabaka bulutlar.</p></article>
+            <article class="card"><h3>Cumulus</h3><p>1000–2000 m: pamuk benzeri, gün ışığında gelişen bulutlar.</p></article>
+            <article class="card"><h3>Cirrus</h3><p>5000–13000 m: yüksek, ince ve ipliksi bulutlar.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="title reveal">Servis modelleri</h2>
         <div class="table-wrap reveal">
           <table>
             <thead><tr><th>Model</th><th>Ne alırsınız?</th><th>Tipik kullanım</th></tr></thead>
@@ -137,10 +164,10 @@
       </div>
     </section>
 
-    <section id="deployment" class="section">
+    <section id="deployment" class="section alt">
       <div class="container">
-        <h2 class="section-title reveal">Dağıtım modelleri</h2>
-        <div class="card-grid">
+        <h2 class="title reveal">Dağıtım modelleri</h2>
+        <div class="grid grid-4">
           <article class="card reveal"><h3>Public Cloud</h3><p>AWS, Azure, Google Cloud gibi herkese açık altyapı.</p></article>
           <article class="card reveal"><h3>Private Cloud</h3><p>Tek kurum içinde çalışan izole ortam.</p></article>
           <article class="card reveal"><h3>Hybrid Cloud</h3><p>On-prem ve public cloud birlikte.</p></article>
@@ -149,11 +176,11 @@
       </div>
     </section>
 
-    <section id="providers" class="section alt">
+    <section id="providers" class="section">
       <div class="container">
-        <h2 class="section-title reveal">Nerede çalışır?</h2>
-        <p class="lead reveal">Bulut fiziksel olarak region, availability zone ve edge lokasyonlardan oluşur. Veri konumu, gecikme ve uyumluluk için kritiktir.</p>
-        <div class="provider-grid">
+        <h2 class="title reveal">Nerede çalışır?</h2>
+        <p class="lead reveal">Bulut fiziksel olarak region, availability zone ve edge lokasyonlardan oluşur.</p>
+        <div class="grid grid-3">
           <article class="card reveal"><h3>AWS</h3><p>Global region ağı ve AZ yapıları.</p></article>
           <article class="card reveal"><h3>Microsoft Azure</h3><p>Geniş global altyapı ve uyumluluk araçları.</p></article>
           <article class="card reveal"><h3>Google Cloud</h3><p>Region/zone yapısı ve analitik servisleri.</p></article>
@@ -167,10 +194,10 @@
       </div>
     </section>
 
-    <section id="security" class="section">
+    <section id="security" class="section alt">
       <div class="container">
-        <h2 class="section-title reveal">Güvenlik ve uyumluluk</h2>
-        <div class="card-grid">
+        <h2 class="title reveal">Güvenlik ve uyumluluk</h2>
+        <div class="grid grid-3">
           <article class="card reveal"><h3>Ortak sorumluluk</h3><p>Sağlayıcı altyapıyı, müşteri veri ve erişimi yönetir.</p></article>
           <article class="card reveal"><h3>IAM</h3><p>En az yetki, MFA, rol tabanlı erişim.</p></article>
           <article class="card reveal"><h3>Şifreleme</h3><p>Aktarım ve depolama sırasında şifreleme.</p></article>
@@ -181,10 +208,10 @@
       </div>
     </section>
 
-    <section id="resilience" class="section alt">
+    <section id="resilience" class="section">
       <div class="container">
-        <h2 class="section-title reveal">Dayanıklılık ve felaket kurtarma</h2>
-        <div class="feature-grid">
+        <h2 class="title reveal">Dayanıklılık ve felaket kurtarma</h2>
+        <div class="grid grid-4">
           <article class="card reveal"><h3>RTO / RPO</h3><p>Kurtarma süresi ve veri kaybı hedefleri.</p></article>
           <article class="card reveal"><h3>3-2-1 yedek</h3><p>3 kopya, 2 ortam, 1 off-site.</p></article>
           <article class="card reveal"><h3>Multi-region</h3><p>Farklı bölgelerde dağıtım.</p></article>
@@ -193,10 +220,10 @@
       </div>
     </section>
 
-    <section id="cost" class="section">
+    <section id="cost" class="section alt">
       <div class="container">
-        <h2 class="section-title reveal">Maliyet ve optimizasyon</h2>
-        <div class="card-grid">
+        <h2 class="title reveal">Maliyet ve optimizasyon</h2>
+        <div class="grid grid-4">
           <article class="card reveal"><h3>Pay-as-you-go</h3><p>Kullanım kadar ödeme.</p></article>
           <article class="card reveal"><h3>Right-sizing</h3><p>Gerçek kullanıma göre boyutlandırma.</p></article>
           <article class="card reveal"><h3>Autoscaling</h3><p>Talebe göre ölçekleme.</p></article>
@@ -205,22 +232,22 @@
       </div>
     </section>
 
-    <section id="resources" class="section alt">
+    <section id="resources" class="section">
       <div class="container">
-        <h2 class="section-title reveal">Kaynaklar</h2>
-        <div class="resource-grid">
-          <a class="resource-card reveal" href="https://aws.amazon.com/learn/" target="_blank" rel="noopener">AWS Learn</a>
-          <a class="resource-card reveal" href="https://learn.microsoft.com/" target="_blank" rel="noopener">Microsoft Learn</a>
-          <a class="resource-card reveal" href="https://cloud.google.com/docs" target="_blank" rel="noopener">Google Cloud Docs</a>
-          <a class="resource-card reveal" href="https://www.nist.gov/publications/nist-sp-800-145" target="_blank" rel="noopener">NIST SP 800-145</a>
-          <a class="resource-card reveal" href="https://github.com/topics/cloud-computing" target="_blank" rel="noopener">GitHub Topics</a>
+        <h2 class="title reveal">Kaynaklar</h2>
+        <div class="resources">
+          <a class="resource reveal" href="https://aws.amazon.com/learn/" target="_blank" rel="noopener">AWS Learn</a>
+          <a class="resource reveal" href="https://learn.microsoft.com/" target="_blank" rel="noopener">Microsoft Learn</a>
+          <a class="resource reveal" href="https://cloud.google.com/docs" target="_blank" rel="noopener">Google Cloud Docs</a>
+          <a class="resource reveal" href="https://www.nist.gov/publications/nist-sp-800-145" target="_blank" rel="noopener">NIST SP 800-145</a>
+          <a class="resource reveal" href="https://github.com/topics/cloud-computing" target="_blank" rel="noopener">GitHub Topics</a>
         </div>
       </div>
     </section>
 
-    <section id="glossary" class="section">
+    <section id="glossary" class="section alt">
       <div class="container">
-        <h2 class="section-title reveal">Sözlük</h2>
+        <h2 class="title reveal">Sözlük</h2>
         <div class="table-wrap reveal">
           <table>
             <thead><tr><th>Türkçe</th><th>İngilizce</th><th>Kısa anlam</th></tr></thead>
@@ -238,19 +265,36 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">© 2026 CloudMed — MIT License</div>
+  <footer>
+    <div class="container">© 2026 CloudMed Atlas — MIT License</div>
   </footer>
 
   <script>
-    const toggle = document.getElementById('navToggle');
-    const nav = document.getElementById('navList');
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-      });
+    const alt = document.getElementById('alt');
+    const altVal = document.getElementById('altVal');
+    const cloudInfo = document.getElementById('cloudInfo');
+    const clouds = {
+      c1: document.querySelector('.c1'),
+      c2: document.querySelector('.c2'),
+      c3: document.querySelector('.c3'),
+      c4: document.querySelector('.c4')
+    };
+    function updateClouds(value) {
+      altVal.textContent = value + ' m';
+      const active = [];
+      if (value >= 0 && value <= 2000) { clouds.c1.style.opacity = '0.9'; clouds.c1.style.transform = 'scale(1)'; active.push('Stratus'); }
+      else { clouds.c1.style.opacity = '0.15'; clouds.c1.style.transform = 'scale(0.8)'; }
+      if (value >= 1000 && value <= 2000) { clouds.c2.style.opacity = '0.9'; clouds.c2.style.transform = 'scale(1)'; active.push('Cumulus'); }
+      else { clouds.c2.style.opacity = '0.15'; clouds.c2.style.transform = 'scale(0.8)'; }
+      if (value >= 5000 && value <= 13000) { clouds.c3.style.opacity = '0.9'; clouds.c3.style.transform = 'scale(1)'; active.push('Cirrus'); }
+      else { clouds.c3.style.opacity = '0.15'; clouds.c3.style.transform = 'scale(0.8)'; }
+      clouds.c4.style.opacity = value > 8000 ? '0.9' : '0.2';
+      cloudInfo.textContent = active.length ? active.join(', ') + ' bulutları bu rakımda görülebilir.' : 'Bu rakımda belirgin bir bulut türü yok.';
     }
+    alt.addEventListener('input', (e) => updateClouds(Number(e.target.value)));
+    updateClouds(Number(alt.value));
+
+    const nav = document.getElementById('nav');
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (e) => {
         const id = link.getAttribute('href');
@@ -259,8 +303,6 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          nav.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
         }
       });
     });
