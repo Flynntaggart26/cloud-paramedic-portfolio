@@ -1,0 +1,40 @@
+/* ---------- Flash Cards (generic) ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:24px;flex:1}
+.card-wrap{position:relative;width:100%;height:380px;perspective:1500px}
+.card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.4,0,.2,1);cursor:pointer;border-radius:var(--radius)}
+.card.flipped{transform:rotateY(180deg)}
+.card.favorited{transform:rotateY(180deg) scale(1.02)}
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);
+  padding:28px;display:flex;flex-direction:column;box-shadow:var(--shadow);border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);backdrop-filter:blur(12px)
+}
+.face.front{background:linear-gradient(135deg,var(--sky),var(--sky-dark));color:#fff}
+.face.back{
+  background:var(--card);color:var(--ink);transform:rotateY(180deg);overflow-y:auto
+}
+.face h3{font-size:22px;margin-bottom:10px}
+.face p{font-size:15px;line-height:1.6;opacity:.95}
+.face.back p{opacity:1;color:var(--ink)}
+.card-actions{position:absolute;top:16px;right:16px;display:flex;gap:10px;opacity:0;transition:opacity .3s}
+.card-wrap:hover .card-actions{opacity:1}
+.action-btn{width:36px;height:36px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,0.9);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s}
+.action-btn:hover{background:var(--sky);color:#fff;border-color:var(--sky);transform:translateY(-2px)}
+[data-theme="dark"] .action-btn{background:rgba(255,255,255,0.08);border-color:var(--border);color:var(--ink)}
+[data-theme="dark"] .action-btn:hover{background:var(--sky);color:#fff}
+
+/* ---------- Table ---------- */
+.table-wrap{overflow-x:auto;margin-top:20px;border-radius:20px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(8px)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:rgba(14,165,233,0.05);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(14,165,233,0.04)}
+.badge{display:inline-block;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;background:var(--accent-glow);color:var(--sky-dark)}
+[data-theme="dark"] .badge{color:var(--accent)}
+
+/* ---------- Footer & Dots ---------- */
+footer{padding:40px 24px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--border);background:var(--card)}
+.dot-nav{position:fixed;right:30px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:100;pointer-events:none}
+.dot{width:10px;height:10px;border-radius:50%;background:#cbd5e1;cursor:pointer;transition:all .3s;pointer-events:auto}
+.dot.active{background:var(--sky);width:30px;border-radius:6px;box-shadow:0 0 0 6px var(--accent-glow)}
