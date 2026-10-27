@@ -775,7 +775,7 @@ footer a:hover{color:var(--primary)}
       if (selected && opts.focusTab) tab.focus();
       if (selected) tab.scrollIntoView({ block: "nearest", inline: "center" });
     });
-    if (opts.push !== false) {
+    if (opts.push !== false && location.hash !== "#" + slug) {
       if (history.pushState) history.pushState({ slug: slug }, "", "#" + slug);
       else location.hash = slug;
     }
