@@ -3,311 +3,927 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CloudMed Atlas Pro</title>
+<title>CloudMed — Paramedikler için Bulut Bilişim Rehberi</title>
+<meta name="description" content="Paramedikler ve saha sağlık ekipleri için bulut bilişim rehberi: servis ve dağıtım modelleri, KVKK/HIPAA uyumluluğu, dayanıklılık ve maliyet yönetimi." />
+<link rel="canonical" href="https://flynntaggart26.github.io/cloud-paramedic-portfolio/" />
+<meta name="theme-color" content="#050b18" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="CloudMed" />
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:title" content="CloudMed — Paramedikler için Bulut Bilişim Rehberi" />
+<meta property="og:description" content="Servis ve dağıtım modelleri, veri konumu, KVKK/HIPAA uyumluluğu, yedeklilik ve bulut maliyeti: saha sağlık ekipleri için tek sayfalık başvuru." />
+<meta property="og:url" content="https://flynntaggart26.github.io/cloud-paramedic-portfolio/" />
+<meta property="og:image" content="https://flynntaggart26.github.io/cloud-paramedic-portfolio/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="CloudMed — Paramedikler için bulut bilişim rehberi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CloudMed — Paramedikler için Bulut Bilişim Rehberi" />
+<meta name="twitter:description" content="Servis ve dağıtım modelleri, veri konumu, uyumluluk, yedeklilik ve maliyet: saha sağlık ekipleri için bulut rehberi." />
+<meta name="twitter:image" content="https://flynntaggart26.github.io/cloud-paramedic-portfolio/og.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
 <style>
-:root{--bg:#050b18;--panel:rgba(255,255,255,.08);--border:rgba(255,255,255,.16);--text:#f2f6ff;--muted:#a8b7e6;--primary:#78c4ff;--accent:#9f7cff;--success:#52e0a5;--warn:#ffd166;--radius:20px;--shadow:0 20px 60px rgba(0,0,0,.5)}
-*{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{font-family:'Inter',system-ui,sans-serif;background:radial-gradient(1000px 500px at 15% -10%,#1d3a7a 0%,transparent 60%),radial-gradient(900px 450px at 85% 0%,#4a2a8a 0%,transparent 55%),var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.container{width:min(1240px,94%);margin:0 auto}
-header{position:sticky;top:0;z-index:80;backdrop-filter:blur(16px);background:rgba(5,11,24,.75);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px;flex-wrap:wrap}
-.brand{font-weight:900;font-size:1.25rem;background:linear-gradient(120deg,var(--primary),var(--accent),var(--success));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none}
-.tabs{display:flex;gap:8px;flex-wrap:wrap}
-.tab{border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--muted);padding:9px 14px;border-radius:999px;cursor:pointer;font-weight:600;font-size:.86rem;transition:all .25s}
-.tab:hover{color:var(--text);transform:translateY(-1px)}
-.tab.active{background:linear-gradient(120deg,var(--primary),var(--accent));color:#050b18;border-color:transparent;box-shadow:0 8px 24px rgba(120,196,255,.35)}
-.page{display:none;animation:fadeSlide .45s ease}
-.page.active{display:block}
-@keyframes fadeSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.hero{padding:70px 0 50px}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
-.eyebrow{color:var(--primary);font-weight:800;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
-h1{font-size:clamp(2.4rem,5vw,4rem);line-height:1.05;margin:12px 0 16px}
-h2{font-size:clamp(1.8rem,3vw,2.6rem);margin:0 0 14px}
-h3{font-size:1.08rem;margin:0 0 8px}
+:root{
+  --bg:#050b18; --panel:rgba(255,255,255,.07); --panel-2:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.16); --text:#f2f6ff; --muted:#a8b7e6;
+  --primary:#78c4ff; --accent:#9f7cff; --success:#52e0a5; --warn:#ffd166; --danger:#ff8fa3;
+  --radius:20px; --shadow:0 20px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:
+    radial-gradient(1000px 500px at 15% -10%,#1d3a7a 0%,transparent 60%),
+    radial-gradient(900px 450px at 85% 0%,#4a2a8a 0%,transparent 55%),
+    var(--bg);
+  color:var(--text); min-height:100vh; overflow-x:hidden; line-height:1.6;
+}
+h1{font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.2;margin:0 0 14px}
+h3{font-size:1.06rem;line-height:1.35;margin:0 0 8px}
 p{color:var(--muted)}
-.btn{display:inline-block;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:800;transition:transform .2s,box-shadow .2s}
+a{color:var(--primary)}
+.container{width:min(1240px,94%);margin:0 auto}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:200;background:var(--primary);color:#050b18;padding:10px 16px;border-radius:10px;font-weight:800;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:12px}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:6px}
+
+header{position:sticky;top:0;z-index:80;backdrop-filter:blur(16px);background:rgba(5,11,24,.82);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:14px;flex-wrap:wrap}
+.brand{font-weight:900;font-size:1.2rem;background:linear-gradient(120deg,var(--primary),var(--accent),var(--success));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;white-space:nowrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--muted);padding:8px 13px;border-radius:999px;cursor:pointer;font-weight:600;font-size:.84rem;font-family:inherit;transition:color .2s,background .2s,transform .2s;white-space:nowrap}
+.tab:hover{color:var(--text);transform:translateY(-1px)}
+.tab[aria-selected="true"]{background:linear-gradient(120deg,var(--primary),var(--accent));color:#050b18;border-color:transparent;box-shadow:0 8px 24px rgba(120,196,255,.3)}
+.tab:focus-visible{outline-offset:2px}
+
+.page{padding:36px 0 60px;animation:fadeSlide .4s ease}
+.page[hidden]{display:none}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.hero{padding:28px 0 20px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center}
+.eyebrow{color:var(--primary);font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+.hero h1{margin:10px 0 16px}
+.gradient-text{background:linear-gradient(120deg,var(--primary),var(--accent),var(--success));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:70ch;margin-bottom:22px}
+.actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:800;font-size:.95rem;font-family:inherit;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn.primary{background:linear-gradient(120deg,var(--primary),var(--accent));color:#050b18;box-shadow:0 10px 30px rgba(120,196,255,.35)}
-.btn.ghost{border:1px solid var(--border);color:var(--text)}
-.actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;backdrop-filter:blur(10px);box-shadow:var(--shadow)}
-.simulator{position:relative;min-height:420px;overflow:hidden;border-radius:var(--radius)}
-.mountain{position:absolute;bottom:0;left:0;width:100%;height:78%}
-.cloud{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffffff,#dfe9ff);filter:blur(1.5px);opacity:.15;transition:opacity .45s,transform .45s;animation:float 8s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.c1{width:170px;height:70px;top:74%;left:6%}
-.c2{width:240px;height:80px;top:60%;left:30%}
-.c3{width:190px;height:60px;top:42%;left:60%}
-.c4{width:130px;height:50px;top:26%;left:16%}
-.c5{width:160px;height:55px;top:18%;left:72%}
-.controls{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(5,11,24,.6);border:1px solid var(--border);border-radius:16px;padding:14px;backdrop-filter:blur(8px)}
-.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-input[type=range]{flex:1;accent-color:var(--primary)}
-input[type=number]{width:110px;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--text)}
-.value{font-weight:900;color:var(--primary);min-width:92px}
-.info{margin-top:10px;color:var(--muted);font-size:.95rem}
+.btn.primary{background:linear-gradient(120deg,var(--primary),var(--accent));color:#050b18;box-shadow:0 10px 30px rgba(120,196,255,.32)}
+.btn.ghost{border-color:var(--border);color:var(--text);background:none}
+
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.diagram{width:100%;height:auto;display:block}
+.diagram text{font-family:inherit}
+
 .grid{display:grid;gap:16px}
-.grid-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.grid-4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:transform .25s,border-color .25s}
-.card:hover{transform:translateY(-4px);border-color:rgba(120,196,255,.45)}
-.card p{margin-top:6px}
+.card p{margin-top:6px;font-size:.94rem}
+.card:hover{transform:translateY(-3px);border-color:rgba(120,196,255,.45)}
+.card .kicker{display:block;color:var(--primary);font-weight:800;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+a.card{color:var(--text);text-decoration:none;display:block}
+a.card:hover{border-color:var(--primary)}
+.card-note{margin-top:10px;font-size:.83rem;color:var(--muted)}
+
+.callout{margin-top:18px;padding:16px 18px;border-left:3px solid var(--warn);background:rgba(255,209,102,.07);border-radius:0 14px 14px 0;color:var(--text);font-size:.95rem}
+.callout strong{color:var(--warn)}
+.note{margin-top:14px;font-size:.85rem;color:var(--muted)}
+
 .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;background:var(--panel)}
-th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
-th{background:rgba(255,255,255,.04);color:var(--primary);font-weight:800}
+table{width:100%;border-collapse:collapse;background:var(--panel);min-width:560px}
+caption{caption-side:top;text-align:left;padding:12px 14px 0;color:var(--muted);font-size:.85rem}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;font-size:.94rem}
+th{background:rgba(255,255,255,.05);color:var(--primary);font-weight:800;font-size:.85rem;letter-spacing:.03em}
+td:first-child{color:var(--text);font-weight:600}
 tr:last-child td{border-bottom:none}
-.checklist{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:8px}
-.checklist li{padding:10px 14px;background:var(--panel);border:1px solid var(--border);border-radius:12px;color:var(--muted)}
-.checklist li::before{content:"✓ ";color:var(--success);font-weight:900}
-.resources{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.resource{padding:16px;background:var(--panel);border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;text-align:center;transition:transform .2s,border-color .2s}
+
+.checklist{list-style:none;display:grid;gap:8px;margin-top:16px}
+.checklist li{padding:11px 14px 11px 38px;position:relative;background:var(--panel);border:1px solid var(--border);border-radius:12px;color:var(--muted);font-size:.94rem}
+.checklist li::before{content:"✓";position:absolute;left:14px;color:var(--success);font-weight:900}
+.checklist.warn li::before{content:"!";color:var(--warn)}
+
+.matrix{display:grid;gap:18px;margin-top:20px}
+.matrix-row{display:grid;grid-template-columns:80px 1fr;gap:14px;align-items:center}
+.matrix-label{font-weight:800;font-size:.9rem}
+.bar{display:flex;height:34px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.bar span{display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#050b18;white-space:nowrap}
+.bar .own{background:linear-gradient(120deg,var(--warn),#ffb703)}
+.bar .vendor{background:rgba(120,196,255,.85)}
+
+.sim{margin-top:20px}
+.sim fieldset{border:1px solid var(--border);border-radius:16px;padding:16px;background:var(--panel-2);margin-bottom:14px}
+.sim legend{padding:0 8px;font-weight:800;font-size:.86rem;color:var(--text)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips label{border:1px solid var(--border);border-radius:999px;padding:8px 14px;font-size:.86rem;color:var(--muted);cursor:pointer;transition:all .2s;background:rgba(255,255,255,.03)}
+.chips label:hover{color:var(--text);border-color:rgba(120,196,255,.5)}
+.chips input:checked + label{background:linear-gradient(120deg,var(--primary),var(--accent));color:#050b18;border-color:transparent;font-weight:700}
+.chips input:focus-visible + label{outline:2px solid var(--primary);outline-offset:2px}
+.result{margin-top:6px;border-top:1px solid var(--border);padding-top:18px}
+.result-hint{color:var(--muted);font-size:.94rem}
+.result-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.result-head strong{font-size:1.25rem}
+.result-head .tag{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--success);border:1px solid rgba(82,224,165,.4);border-radius:999px;padding:2px 9px}
+.result ul{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:.92rem}
+.result ul li{margin-bottom:6px}
+.scores{display:grid;gap:8px;margin-top:16px}
+.score{display:grid;grid-template-columns:110px 1fr 42px;gap:10px;align-items:center;font-size:.85rem}
+.score-name{font-weight:700;color:var(--text)}
+.score-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.score-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .35s ease}
+.score-val{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.score.top .score-name{color:var(--success)}
+
+.resources{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.resource{padding:16px;background:var(--panel);border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;text-align:center;font-weight:600;font-size:.9rem;transition:transform .2s,border-color .2s}
 .resource:hover{transform:translateY(-3px);border-color:var(--primary)}
-footer{padding:24px 0;border-top:1px solid var(--border);color:var(--muted)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.tabs{width:100%}}
+.resource small{display:block;color:var(--muted);font-weight:400;font-size:.78rem;margin-top:4px}
+
+.lead-block{max-width:75ch}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:18px}
+.tick{list-style:none;display:grid;gap:8px;margin-top:10px}
+.tick li{padding-left:24px;position:relative;color:var(--muted);font-size:.94rem}
+.tick li::before{position:absolute;left:0;font-weight:900}
+.tick.good li::before{content:"+";color:var(--success)}
+.tick.bad li::before{content:"−";color:var(--danger)}
+
+footer{padding:26px 0;border-top:1px solid var(--border);color:var(--muted);font-size:.88rem}
+.footer-inner{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--primary)}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .page{padding:26px 0 48px}
+}
+@media (max-width:820px){
+  .nav{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:10px}
+  .brand{align-self:flex-start}
+  .tabs{width:100%;max-width:100%;min-width:0;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+  .matrix-row{grid-template-columns:1fr;gap:6px}
+  .score{grid-template-columns:88px 1fr 36px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
 <header>
   <div class="container nav">
-    <a class="brand" href="#top">☁️ CloudMed Pro</a>
-    <div class="tabs" id="tabs">
-      <button class="tab active" data-page="home">Ana Sayfa</button>
-      <button class="tab" data-page="sim">Simülatör</button>
-      <button class="tab" data-page="clouds">Bulut Türleri</button>
-      <button class="tab" data-page="services">Servisler</button>
-      <button class="tab" data-page="deploy">Dağıtım</button>
-      <button class="tab" data-page="providers">Sağlayıcılar</button>
-      <button class="tab" data-page="security">Güvenlik</button>
-      <button class="tab" data-page="glossary">Sözlük</button>
-    </div>
+    <a class="brand" href="#ana-sayfa">CloudMed</a>
+    <nav class="tabs" role="tablist" aria-label="Bölümler">
+      <button class="tab" type="button" role="tab" id="tab-ana-sayfa" aria-controls="panel-ana-sayfa" aria-selected="true" data-slug="ana-sayfa">Ana Sayfa</button>
+      <button class="tab" type="button" role="tab" id="tab-temeller" aria-controls="panel-temeller" aria-selected="false" tabindex="-1" data-slug="temeller">Temeller</button>
+      <button class="tab" type="button" role="tab" id="tab-servisler" aria-controls="panel-servisler" aria-selected="false" tabindex="-1" data-slug="servisler">Servisler</button>
+      <button class="tab" type="button" role="tab" id="tab-dagitim" aria-controls="panel-dagitim" aria-selected="false" tabindex="-1" data-slug="dagitim">Dağıtım</button>
+      <button class="tab" type="button" role="tab" id="tab-saglayicilar" aria-controls="panel-saglayicilar" aria-selected="false" tabindex="-1" data-slug="saglayicilar">Sağlayıcılar</button>
+      <button class="tab" type="button" role="tab" id="tab-guvenlik" aria-controls="panel-guvenlik" aria-selected="false" tabindex="-1" data-slug="guvenlik">Güvenlik</button>
+      <button class="tab" type="button" role="tab" id="tab-dayaniklilik" aria-controls="panel-dayaniklilik" aria-selected="false" tabindex="-1" data-slug="dayaniklilik">Dayanıklılık</button>
+      <button class="tab" type="button" role="tab" id="tab-maliyet" aria-controls="panel-maliyet" aria-selected="false" tabindex="-1" data-slug="maliyet">Maliyet</button>
+      <button class="tab" type="button" role="tab" id="tab-sozluk" aria-controls="panel-sozluk" aria-selected="false" tabindex="-1" data-slug="sozluk">Sözlük</button>
+    </nav>
   </div>
 </header>
 
-<main class="container" id="top">
-  <section id="home" class="page active">
+<main id="main" class="container" tabindex="-1">
+
+  <!-- ================= ANA SAYFA ================= -->
+  <section class="page" id="panel-ana-sayfa" role="tabpanel" aria-labelledby="tab-ana-sayfa" tabindex="0">
     <div class="hero">
       <div class="hero-grid">
-        <div class="reveal">
-          <span class="eyebrow">Interactive Cloud Atlas Pro</span>
-          <h1>Bulutları <span style="background:linear-gradient(120deg,var(--primary),var(--accent),var(--success));-webkit-background-clip:text;background-clip:text;color:transparent">rakıma göre</span> keşfedin</h1>
-          <p>Gerçek bulut türlerini, servis modellerini ve güvenlik prensiplerini tek bir profesyonel arayüzde öğrenin. Rakım simülatörü ile tüm bulut türlerinin hangi yükseklikte oluştuğunu görün.</p>
+        <div>
+          <span class="eyebrow">Paramedikler için bulut bilişim</span>
+          <h1>Sahadaki veri, <span class="gradient-text">bulutta güvende</span> kalsın</h1>
+          <p class="lead">Ambulans tabletinden hastane sevk merkezine uzanan veri akışını anlamak için hazırlanmış tek sayfalık başvuru. Servis modellerinden veri konumuna, KVKK/HIPAA uyumluluğundan kesinti planına ve bulut maliyetine kadar sahadaki kararları etkileyen başlıklar.</p>
           <div class="actions">
-            <button class="btn primary" data-go="sim">Simülatörü Aç</button>
-            <button class="btn ghost" data-go="clouds">Bulut Türleri</button>
+            <a class="btn primary" href="#temeller">Temellerden başla</a>
+            <a class="btn ghost" href="#dagitim">Karar simülatörü</a>
           </div>
         </div>
-        <div class="panel simulator reveal">
-          <svg class="mountain" viewBox="0 0 1200 420" preserveAspectRatio="none">
+
+        <div class="panel">
+          <svg class="diagram" viewBox="0 0 560 360" role="img" aria-labelledby="diagram-title">
+            <title id="diagram-title">Ambulans tabletinden bulut üzerinden hastane sevk merkezine şifreli veri akışı</title>
             <defs>
-              <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a4f8f"/><stop offset="1" stop-color="#0d1b35"/></linearGradient>
-              <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b8d4ff"/></linearGradient>
+              <linearGradient id="cloudGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#78c4ff" stop-opacity=".6" />
+                <stop offset="1" stop-color="#9f7cff" stop-opacity=".6" />
+              </linearGradient>
+              <marker id="arrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#a8b7e6" />
+              </marker>
             </defs>
-            <polygon points="0,420 140,300 260,330 420,180 560,260 700,150 860,250 1020,200 1200,420" fill="url(#m1)"/>
-            <polygon points="420,180 470,150 520,180" fill="url(#snow)" opacity=".9"/>
-            <polygon points="700,150 760,120 820,150" fill="url(#snow)" opacity=".85"/>
-            <polygon points="1020,200 1080,170 1140,200" fill="url(#snow)" opacity=".8"/>
+
+            <rect x="14" y="148" width="146" height="104" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)" />
+            <rect x="34" y="168" width="26" height="8" rx="4" fill="#52e0a5" opacity=".85" />
+            <rect x="43" y="159" width="8" height="26" rx="4" fill="#52e0a5" opacity=".85" />
+            <text x="87" y="196" text-anchor="middle" fill="#f2f6ff" font-size="15" font-weight="700">Ambulans</text>
+            <text x="87" y="220" text-anchor="middle" fill="#a8b7e6" font-size="12">tablet / saha</text>
+
+            <line x1="164" y1="200" x2="238" y2="200" stroke="#a8b7e6" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrowHead)" />
+            <text x="200" y="188" text-anchor="middle" fill="#78c4ff" font-size="11" font-weight="700">TLS</text>
+
+            <g>
+              <circle cx="300" cy="182" r="32" fill="url(#cloudGrad)" />
+              <circle cx="338" cy="160" r="42" fill="url(#cloudGrad)" />
+              <circle cx="378" cy="184" r="28" fill="url(#cloudGrad)" />
+              <rect x="298" y="180" width="80" height="32" rx="16" fill="url(#cloudGrad)" />
+            </g>
+            <text x="340" y="150" text-anchor="middle" fill="#f2f6ff" font-size="13" font-weight="700">Bulut</text>
+            <text x="340" y="252" text-anchor="middle" fill="#a8b7e6" font-size="11">Region · AZ · şifreli depolama</text>
+
+            <line x1="412" y1="200" x2="428" y2="200" stroke="#a8b7e6" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrowHead)" />
+            <text x="420" y="188" text-anchor="middle" fill="#78c4ff" font-size="11" font-weight="700">API</text>
+
+            <rect x="428" y="148" width="120" height="104" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)" />
+            <text x="488" y="196" text-anchor="middle" fill="#f2f6ff" font-size="15" font-weight="700">Hastane</text>
+            <text x="488" y="220" text-anchor="middle" fill="#a8b7e6" font-size="12">sevk merkezi</text>
+
+            <text x="280" y="312" text-anchor="middle" fill="#a8b7e6" font-size="12">Hasta verisi cihazda üretilir → bölgeye yazılır → yetkili ekip okur</text>
           </svg>
-          <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c4"></div><div class="cloud c5"></div>
-          <div class="controls">
-            <div class="row">
-              <label for="alt">Rakım (m)</label>
-              <input id="alt" type="range" min="0" max="13000" value="1200" />
-              <input id="altNum" type="number" min="0" max="13000" value="1200" />
-              <span class="value" id="altVal">1200 m</span>
-            </div>
-            <div class="info" id="cloudInfo">Stratus ve cumulus bulutları bu rakımda görülebilir.</div>
-          </div>
+        </div>
+      </div>
+
+      <h2 class="sr-only">Hızlı bakış</h2>
+      <div class="grid grid-4" style="margin-top:26px">
+        <a class="card" href="#servisler">
+          <span class="kicker">Servis modeli</span>
+          <h3>IaaS’tan DaaS’a</h3>
+          <p>Hangisini seçeceğinizi, neyi yönetmeye razı olduğunuz belirler.</p>
+        </a>
+        <a class="card" href="#dagitim">
+          <span class="kicker">Dağıtım</span>
+          <h3>Public, private, hibrit</h3>
+          <p>Veri hassasiyeti ve kesinti toleransına göre model seçin.</p>
+        </a>
+        <a class="card" href="#dayaniklilik">
+          <span class="kicker">Süreklilik</span>
+          <h3>RTO ve RPO</h3>
+          <p>“Kaç saat kapalı kalabiliriz, kaç dakikalık veriyi kaybedebiliriz?”</p>
+        </a>
+        <a class="card" href="#guvenlik">
+          <span class="kicker">Uyumluluk</span>
+          <h3>KVKK · HIPAA · GDPR</h3>
+          <p>Hasta verisi için sözleşme, şifreleme ve kayıt şart.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEMELLER ================= -->
+  <section class="page" id="panel-temeller" role="tabpanel" aria-labelledby="tab-temeller" tabindex="0" hidden>
+    <h2>Bulut bilişimin temelleri</h2>
+    <p class="lead">NIST SP 800-145 bulutu beş temel özellikle tanımlar. Bu beş madde, saha ekipmanından hastane sistemine kadar her kararın arkasında durur.</p>
+
+    <div class="grid grid-3">
+      <article class="card">
+        <span class="kicker">01</span>
+        <h3>Talep üzerine self-servis</h3>
+        <p>Kapasiteyi kendiniz talep edersiniz; sunucu siparişi, kargo ve kurulum beklemezsiniz.</p>
+      </article>
+      <article class="card">
+        <span class="kicker">02</span>
+        <h3>Geniş ağ erişimi</h3>
+        <p>Aynı hizmete tablet, telefon ve dizüstü bilgisayardan standart protokollerle erişilir.</p>
+      </article>
+      <article class="card">
+        <span class="kicker">03</span>
+        <h3>Kaynak havuzu</h3>
+        <p>Sağlayıcı donanımını çok kiracılı havuzdan sunar. Mantıksal izolasyon ve yetkilendirme sizin sorumluluğunuzdadır.</p>
+      </article>
+      <article class="card">
+        <span class="kicker">04</span>
+        <h3>Hızlı esneklik</h3>
+        <p>Talep artınca kapasite büyür, azalınca küçülür. Vardiya ve tatil dönemlerinde öngörülemeyen yükü karşılar.</p>
+      </article>
+      <article class="card">
+        <span class="kicker">05</span>
+        <h3>Ölçülen hizmet</h3>
+        <p>Kullandığınız kadar ödersiniz. Ölçüm ve etiketleme olmadan maliyet kontrolü mümkün değildir.</p>
+      </article>
+      <article class="card">
+        <span class="kicker">Sonuç</span>
+        <h3>Bulut bir yer değil</h3>
+        <p>Bulut, bir veri merkezinin adı değil; ölçülen, esnek ve sözleşmeyle yönetilen bir çalışma biçimidir.</p>
+      </article>
+    </div>
+
+    <div class="cols">
+      <div class="panel">
+        <h3>Sahada ne kazandırır?</h3>
+        <ul class="tick good">
+          <li>Sevk bilgisi ambulans ile hastane arasında anında paylaşılır.</li>
+          <li>Cihaz değişse veya kaybolsa da yetkili kullanıcı veriye yeniden erişir.</li>
+          <li>Ekip ve vardiya sayısı arttığında altyapıyı yeniden kurmak gerekmez.</li>
+          <li>Raporlama ve denetim kayıtları tek yerden izlenebilir.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Neyi riske atar?</h3>
+        <ul class="tick bad">
+          <li>Hasta verisi (PHI) cihazdan çıkar; kayıp cihaz ve paylaşım bağlantısı yeni risklerdir.</li>
+          <li>Bağlantı kesilirse kayıt akışı durabilir; çevrimdışı senaryo planlanmalıdır.</li>
+          <li>Uyumluluk ve veri konumu sorumluluğu sağlayıcıya devredilmez, sizde kalır.</li>
+          <li>Yanlış yapılandırılmış depolama, veriyi internete açan en yaygın nedendir.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout"><strong>Kritik soru:</strong> Bu veri nerede duruyor, kimler erişebiliyor ve bağlantı koptuğunda ne oluyor? Üç soruya yazılı cevap veremiyorsanız tasarım henüz bitmemiştir.</div>
+  </section>
+
+  <!-- ================= SERVİSLER ================= -->
+  <section class="page" id="panel-servisler" role="tabpanel" aria-labelledby="tab-servisler" tabindex="0" hidden>
+    <h2>Servis modelleri</h2>
+    <p class="lead">Bulutta “ne alıyorum, neyi yönetiyorum?” sorusunun cevabı servis modelidir. Model yükseldikçe sağlayıcı daha fazla iş üstlenir, siz daha az kontrol sahibi olursunuz.</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Servis modelleri ve sahadaki tipik kullanımı</caption>
+        <thead>
+          <tr><th scope="col">Model</th><th scope="col">Ne alırsınız?</th><th scope="col">Siz yönetirsiniz</th><th scope="col">Sahada tipik kullanım</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>IaaS</td><td>Sanal sunucu, disk, ağ</td><td>İşletim sistemi, yama, uygulama</td><td>Özel entegrasyon gerektiren sevk uygulaması</td></tr>
+          <tr><td>PaaS</td><td>Çalışma zamanı, dağıtım hattı, veritabanı bağlantısı</td><td>Kod ve yapılandırma</td><td>Triyaj formu API’si, iç raporlama servisi</td></tr>
+          <tr><td>SaaS</td><td>Kullanıma hazır yazılım</td><td>Kullanıcılar, roller, veri girişi kuralları</td><td>E-posta, ekip takvimi, hazır klinik uygulama</td></tr>
+          <tr><td>FaaS</td><td>Olay güdümlü fonksiyon çalıştırma</td><td>Fonksiyon kodu ve izinleri</td><td>Yeni sevk kaydında otomatik bildirim</td></tr>
+          <tr><td>DBaaS</td><td>Yönetilen veritabanı, yedek ve yama</td><td>Şema, sorgu, yetkilendirme</td><td>Yedekli hasta kayıt ve rapor verisi</td></tr>
+          <tr><td>DaaS</td><td>Sanal masaüstü</td><td>Kullanıcı profili, uygulama erişimi</td><td>Ortak saha dokümantasyon istasyonu</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:28px">Ortak sorumluluk: kim neyi yönetir?</h3>
+    <p class="note">Aşağıdaki oranlar yaklaşık dağılımı gösterir; hizmete ve yapılandırmaya göre değişir.</p>
+    <div class="matrix">
+      <div class="matrix-row">
+        <span class="matrix-label">IaaS</span>
+        <div class="bar" role="img" aria-label="IaaS: işin yaklaşık yüzde 70'i müşteride, yüzde 30'u sağlayıcıda">
+          <span class="own" style="width:70%">Müşteri %70</span>
+          <span class="vendor" style="width:30%">Sağlayıcı %30</span>
+        </div>
+      </div>
+      <div class="matrix-row">
+        <span class="matrix-label">PaaS</span>
+        <div class="bar" role="img" aria-label="PaaS: işin yaklaşık yüzde 40'ı müşteride, yüzde 60'ı sağlayıcıda">
+          <span class="own" style="width:40%">Müşteri %40</span>
+          <span class="vendor" style="width:60%">Sağlayıcı %60</span>
+        </div>
+      </div>
+      <div class="matrix-row">
+        <span class="matrix-label">SaaS</span>
+        <div class="bar" role="img" aria-label="SaaS: işin yaklaşık yüzde 15'i müşteride, yüzde 85'i sağlayıcıda">
+          <span class="own" style="width:15%">%15</span>
+          <span class="vendor" style="width:85%">Sağlayıcı %85</span>
         </div>
       </div>
     </div>
+
+    <div class="callout"><strong>Unutulmaması gereken:</strong> Hangi modeli seçerseniz seçin; kimlik ve erişim yönetimi, veri sınıflandırması ve yedek doğrulaması müşteride kalır. SaaS’ta bile “veriyi kimler görebilir?” sorusunun sahibi sizsiniz.</div>
   </section>
 
-  <section id="sim" class="page">
-    <h2 class="reveal">Bulut rakım simülatörü</h2>
-    <p class="lead reveal">Rakımı değiştirerek hangi bulut türünün o yükseklikte oluşabileceğini gözlemleyin. Tüm bulut türleri rakım aralıklarına göre simüle edilir.</p>
-    <div class="panel reveal">
-      <div class="grid grid-3">
-        <article class="card"><h3>Stratus</h3><p>0–2000 m: düşük, gri tabaka.</p></article>
-        <article class="card"><h3>Cumulus</h3><p>1000–2000 m: pamuk benzeri.</p></article>
-        <article class="card"><h3>Stratocumulus</h3><p>0–2000 m: dalgalı düşük bulut.</p></article>
-        <article class="card"><h3>Altocumulus</h3><p>2000–6000 m: orta irtifa pamukçuklar.</p></article>
-        <article class="card"><h3>Altostratus</h3><p>2000–6000 m: gri-mavi tabaka.</p></article>
-        <article class="card"><h3>Nimbostratus</h3><p>0–3000 m: yağışlı koyu tabaka.</p></article>
-        <article class="card"><h3>Cirrus</h3><p>5000–13000 m: ince ipliksi.</p></article>
-        <article class="card"><h3>Cirrocumulus</h3><p>5000–12000 m: küçük beyaz pulcuklar.</p></article>
-        <article class="card"><h3>Cirrostratus</h3><p>5000–13000 m: ince halo yapan tabaka.</p></article>
-        <article class="card"><h3>Cumulonimbus</h3><p>0–12000 m: fırtına, dikey gelişim.</p></article>
-      </div>
-    </div>
-  </section>
+  <!-- ================= DAĞITIM ================= -->
+  <section class="page" id="panel-dagitim" role="tabpanel" aria-labelledby="tab-dagitim" tabindex="0" hidden>
+    <h2>Dağıtım modelleri</h2>
+    <p class="lead">Dağıtım modeli, kaynağın kiminle paylaşıldığını ve nerede durduğunu belirler. Sahada bu karar çoğu zaman “hasta verisi nereye yazılabilir?” sorusuna indirgenir.</p>
 
-  <section id="clouds" class="page">
-    <h2 class="reveal">Bulut türleri</h2>
-    <p class="lead reveal">Her bulut türü rakım, görünüm ve hava durumu etkisi ile birlikte listelenir.</p>
-    <div class="table-wrap reveal">
-      <table>
-        <thead><tr><th>Bulut</th><th>Rakım</th><th>Görünüm</th><th>Etki</th></tr></thead>
-        <tbody>
-          <tr><td>Stratus</td><td>0–2 km</td><td>Gri tabaka</td><td>Hafif yağmur/çisenti</td></tr>
-          <tr><td>Stratocumulus</td><td>0–2 km</td><td>Dalgalı düşük bulut</td><td>Genellikle kuru</td></tr>
-          <tr><td>Cumulus</td><td>1–2 km</td><td>Pamuk benzeri</td><td>Fair weather</td></tr>
-          <tr><td>Nimbostratus</td><td>0–3 km</td><td>Koyu tabaka</td><td>Sürekli yağmur</td></tr>
-          <tr><td>Altocumulus</td><td>2–6 km</td><td>Pamukçuklar</td><td>Değişken</td></tr>
-          <tr><td>Altostratus</td><td>2–6 km</td><td>Gri-mavi tabaka</td><td>Yağmur öncesi</td></tr>
-          <tr><td>Cirrus</td><td>5–13 km</td><td>İnce ipliksi</td><td>Hava değişimi işareti</td></tr>
-          <tr><td>Cirrocumulus</td><td>5–12 km</td><td>Küçük pulcuklar</td><td>Serin hava</td></tr>
-          <tr><td>Cirrostratus</td><td>5–13 km</td><td>İnce halo tabakası</td><td>Yağmur öncesi</td></tr>
-          <tr><td>Cumulonimbus</td><td>0–12 km</td><td>Dikey gelişim</td><td>Fırtına, gök gürültüsü</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="services" class="page">
-    <h2 class="reveal">Servis modelleri</h2>
-    <div class="table-wrap reveal">
-      <table>
-        <thead><tr><th>Model</th><th>Ne alırsınız?</th><th>Tipik kullanım</th></tr></thead>
-        <tbody>
-          <tr><td>IaaS</td><td>Sanal sunucu, disk, ağ</td><td>İşletim sistemi ve uygulama yönetimi sizde</td></tr>
-          <tr><td>PaaS</td><td>Çalışma zamanı ve geliştirme platformu</td><td>Kod yazma ve dağıtma</td></tr>
-          <tr><td>SaaS</td><td>Hazır yazılım hizmeti</td><td>E-posta, ofis, sağlık uygulamaları</td></tr>
-          <tr><td>FaaS</td><td>Olay güdümlü fonksiyonlar</td><td>Sunucusuz işlemler</td></tr>
-          <tr><td>DBaaS</td><td>Yönetilen veritabanı</td><td>Hasta kayıtları, raporlama</td></tr>
-          <tr><td>DaaS</td><td>Uzak masaüstü</td><td>Ortak çalışma alanları</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="deploy" class="page">
-    <h2 class="reveal">Dağıtım modelleri</h2>
-    <div class="grid grid-4">
-      <article class="card reveal"><h3>Public Cloud</h3><p>AWS, Azure, Google Cloud gibi herkese açık altyapı.</p></article>
-      <article class="card reveal"><h3>Private Cloud</h3><p>Tek kurum içinde çalışan izole ortam.</p></article>
-      <article class="card reveal"><h3>Hybrid Cloud</h3><p>On-prem ve public cloud birlikte.</p></article>
-      <article class="card reveal"><h3>Multi-Cloud</h3><p>Birden fazla sağlayıcı kullanma.</p></article>
-    </div>
-  </section>
-
-  <section id="providers" class="page">
-    <h2 class="reveal">Sağlayıcılar ve konum</h2>
     <div class="grid grid-3">
-      <article class="card reveal"><h3>AWS</h3><p>Global region ağı ve AZ yapıları.</p></article>
-      <article class="card reveal"><h3>Microsoft Azure</h3><p>Geniş global altyapı ve uyumluluk araçları.</p></article>
-      <article class="card reveal"><h3>Google Cloud</h3><p>Region/zone yapısı ve analitik servisleri.</p></article>
+      <article class="card">
+        <h3>Public Cloud</h3>
+        <p>Sağlayıcının çok kiracılı altyapısı. En hızlı başlangıç ve en düşük sabit maliyet; PHI için sözleşme ve bölge seçimi şarttır.</p>
+      </article>
+      <article class="card">
+        <h3>Private Cloud</h3>
+        <p>Tek kuruma ayrılmış ortam. En yüksek kontrol ve uyumluluk esnekliği, en yüksek sabit maliyet ve uzman gereksinimi.</p>
+      </article>
+      <article class="card">
+        <h3>Hybrid Cloud</h3>
+        <p>Hassas veri içeride, esnek işlem gücü dışarıda. Sağlıkta en yaygın desendir; entegrasyon ve kimlik yönetimi zorlaşır.</p>
+      </article>
+      <article class="card">
+        <h3>Community Cloud</h3>
+        <p>Benzer ihtiyaçları olan kurumların (112 ağı, afet sağlık yapısı, kamu hastaneleri) paylaştığı ortam. Maliyet paylaşılır, yönetişim ortak kurulur.</p>
+      </article>
+      <article class="card">
+        <h3>Multi-Cloud</h3>
+        <p>İki veya daha fazla sağlayıcı. Tek sağlayıcıya bağımlılığı azaltır; yönetim, uyumluluk kanıtı ve veri çıkışı maliyetini artırır.</p>
+      </article>
+      <article class="card">
+        <h3>Seçim kuralı</h3>
+        <p>Önce veri sınıfını, sonra kesinti toleransını, en son maliyeti konuşun. Ters sıra, uyumsuz bir mimariyle biter.</p>
+      </article>
     </div>
-    <ul class="checklist reveal">
-      <li>Veri konumu / ülke sınırları</li>
-      <li>Uyumluluk sertifikaları (HIPAA, GDPR, KVKK)</li>
-      <li>İş birliği protokolleri (BAA/DPA)</li>
-      <li>Şifreleme, loglama, erişim kontrolleri</li>
+
+    <div class="panel sim">
+      <h3>Dağıtım karar simülatörü</h3>
+      <p class="note" style="margin-top:0">Üç soruyu yanıtlayın; veri hassasiyeti, kesinti toleransı ve operasyon kapasitesine göre bir model önerilir.</p>
+
+      <form id="simForm">
+        <fieldset>
+          <legend>1. Hangi veriyi işliyorsunuz?</legend>
+          <div class="chips">
+            <input type="radio" name="data" id="data-phi" value="phi" />
+            <label for="data-phi">Hasta verisi (PHI)</label>
+            <input type="radio" name="data" id="data-internal" value="internal" />
+            <label for="data-internal">İç veri, PHI yok</label>
+            <input type="radio" name="data" id="data-open" value="open" />
+            <label for="data-open">Herkese açık içerik</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Bağlantı koptuğunda ne olmalı?</legend>
+          <div class="chips">
+            <input type="radio" name="offline" id="offline-yes" value="offline-yes" />
+            <label for="offline-yes">Sahada çevrimdışı çalışmalı</label>
+            <input type="radio" name="offline" id="offline-some" value="offline-some" />
+            <label for="offline-some">Kısa kesinti kabul edilebilir</label>
+            <input type="radio" name="offline" id="offline-no" value="offline-no" />
+            <label for="offline-no">Kesinti toleransı yok</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Operasyon kapasiteniz nedir?</legend>
+          <div class="chips">
+            <input type="radio" name="ops" id="ops-low" value="ops-low" />
+            <label for="ops-low">Küçük ekip, düşük bütçe</label>
+            <input type="radio" name="ops" id="ops-mid" value="ops-mid" />
+            <label for="ops-mid">Orta: birkaç teknik kişi</label>
+            <input type="radio" name="ops" id="ops-high" value="ops-high" />
+            <label for="ops-high">Veri merkezi ve uzman ekip var</label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="result" id="simResult" aria-live="polite">
+        <p class="result-hint">Öneriyi görmek için üç soruyu da yanıtlayın.</p>
+      </div>
+      <p class="note">Bu araç eğitim amaçlıdır; hukuki veya uyumluluk tavsiyesi değildir. Nihai karar için veri işleyen sözleşmelerini ve kurum politikanızı esas alın.</p>
+    </div>
+  </section>
+
+  <!-- ================= SAĞLAYICILAR ================= -->
+  <section class="page" id="panel-saglayicilar" role="tabpanel" aria-labelledby="tab-saglayicilar" tabindex="0" hidden>
+    <h2>Sağlayıcılar ve konum</h2>
+    <p class="lead">Üç büyük sağlayıcı benzer temel hizmetleri sunar; farklar bölge ağında, uyumluluk araçlarında ve sözleşme koşullarında ortaya çıkar. Seçim yaparken pazarlama sayfasını değil, güncel bölge listesini ve sözleşmeyi okuyun.</p>
+
+    <div class="grid grid-3">
+      <article class="card">
+        <h3>AWS</h3>
+        <p>Geniş bölge ve kullanılabilirlik bölgesi ağı, olgun sağlık uyumluluk programı.</p>
+        <p class="card-note">İstenen: BAA, seçilen bölgenin veri ikametgahı koşulları, denetim kayıtları.</p>
+      </article>
+      <article class="card">
+        <h3>Microsoft Azure</h3>
+        <p>Kurumsal kimlik (Entra ID) ve uyumluluk araçlarında güçlü; mevcut Microsoft ekosistemiyle hızlı entegre olur.</p>
+        <p class="card-note">İstenen: BAA/DPA, bölge eşleştirmesi, koşullu erişim ve kayıt politikaları.</p>
+      </article>
+      <article class="card">
+        <h3>Google Cloud</h3>
+        <p>Bölge ve zone yapısı, veri analitiği ve yönetilen veritabanı hizmetleri.</p>
+        <p class="card-note">İstenen: BAA, veri işleme ekleri, bölgesel saklama ve erişim şeffaflığı.</p>
+      </article>
+    </div>
+
+    <h3 style="margin-top:28px">Konum sözlüğü</h3>
+    <div class="grid grid-3">
+      <article class="card">
+        <h3>Region</h3>
+        <p>Bir veya daha fazla veri merkezini kapsayan coğrafi alan. Veri ikametgahı kararı burada verilir.</p>
+      </article>
+      <article class="card">
+        <h3>Availability Zone</h3>
+        <p>Bölge içinde bağımsız güç ve ağa sahip izole kaynak grubu. Yedeklilik için ikinci zone’a çıkılır.</p>
+      </article>
+      <article class="card">
+        <h3>Edge</h3>
+        <p>Kullanıcıya yakın önbellek ve dağıtım noktası. Gecikmeyi düşürür, veri saklama yeri değildir.</p>
+      </article>
+    </div>
+
+    <h3 style="margin-top:28px">Sözleşme öncesi kontrol listesi</h3>
+    <ul class="checklist">
+      <li>Veri konumu ve ülke sınırı yazılı olarak tanımlı mı?</li>
+      <li>Uyumluluk sertifikaları güncel mi, kapsamı hangi hizmetleri içeriyor?</li>
+      <li>BAA (sağlık verisi) veya DPA (kişisel veri) imzalanabiliyor mu?</li>
+      <li>Şifreleme ve anahtar yönetimi (BYOK) destekleniyor mu?</li>
+      <li>Loglama, izleme ve erişim kayıtları dışa aktarılabiliyor mu?</li>
+      <li>SLA ve kesinti tazminatı hangi hizmeti kapsıyor?</li>
+      <li>Veri çıkışı (egress) maliyeti ve taşınabilirlik koşulları nedir?</li>
+      <li>Sağlayıcı kesintisinde çalışacak yedek plan yazılı mı?</li>
     </ul>
   </section>
 
-  <section id="security" class="page">
-    <h2 class="reveal">Güvenlik ve uyumluluk</h2>
-    <div class="grid grid-3">
-      <article class="card reveal"><h3>Ortak sorumluluk</h3><p>Sağlayıcı altyapıyı, müşteri veri ve erişimi yönetir.</p></article>
-      <article class="card reveal"><h3>IAM</h3><p>En az yetki, MFA, rol tabanlı erişim.</p></article>
-      <article class="card reveal"><h3>Şifreleme</h3><p>Aktarım ve depolama sırasında şifreleme.</p></article>
-      <article class="card reveal"><h3>Gözlemlenebilirlik</h3><p>Loglama, izleme, uyarılar.</p></article>
-      <article class="card reveal"><h3>Veri koruma</h3><p>PHI/PII koruması ve DLP.</p></article>
-      <article class="card reveal"><h3>Uyumluluk</h3><p>HIPAA, GDPR, KVKK, SOC 2, ISO 27001.</p></article>
-    </div>
-  </section>
+  <!-- ================= GÜVENLİK ================= -->
+  <section class="page" id="panel-guvenlik" role="tabpanel" aria-labelledby="tab-guvenlik" tabindex="0" hidden>
+    <h2>Güvenlik ve uyumluluk</h2>
+    <p class="lead">Bulut güvenliği tek bir ürün değil, bir dizi varsayılan ayardır. Hasta verisi söz konusu olduğunda “yapılandırıldı mı?” değil, “kanıtlanabiliyor mu?” sorusu geçerlidir.</p>
 
-  <section id="glossary" class="page">
-    <h2 class="reveal">Sözlük</h2>
-    <div class="table-wrap reveal">
+    <div class="grid grid-3">
+      <article class="card"><h3>Ortak sorumluluk</h3><p>Sağlayıcı fiziksel altyapıyı, siz veriyi, kimlikleri ve erişim kurallarını yönetirsiniz.</p></article>
+      <article class="card"><h3>IAM</h3><p>En az yetki, rol tabanlı erişim, MFA. Ayrılan personelin erişimi aynı gün kapatılmalı.</p></article>
+      <article class="card"><h3>Şifreleme</h3><p>Aktarımda TLS, durgun halde disk/nesne şifrelemesi. Anahtar yönetimi ayrı bir karar noktasıdır.</p></article>
+      <article class="card"><h3>Gözlemlenebilirlik</h3><p>Denetim kayıtları, erişim logları, anomali uyarıları. Loglar da kişisel veri içerebilir.</p></article>
+      <article class="card"><h3>Veri koruma</h3><p>PHI/PII sınıflandırması, DLP, paylaşım bağlantılarında süre ve kapsam sınırı.</p></article>
+      <article class="card"><h3>Yapılandırma disiplini</h3><p>Herkese açık depolama, varsayılan parola ve geniş izinli anahtar, ihlallerin en yaygın üç nedenidir.</p></article>
+    </div>
+
+    <h3 style="margin-top:28px">Hangi düzenleme neyi gerektirir?</h3>
+    <div class="table-wrap">
       <table>
-        <thead><tr><th>Türkçe</th><th>İngilizce</th><th>Kısa anlam</th></tr></thead>
+        <caption>Kapsam ve sağlayıcıdan istenmesi gerekenler</caption>
+        <thead>
+          <tr><th scope="col">Düzenleme</th><th scope="col">Kapsam</th><th scope="col">Sağlayıcıdan isteyin</th></tr>
+        </thead>
         <tbody>
-          <tr><td>Bulut bilişimi</td><td>Cloud computing</td><td>İnternet üzerinden kaynak sunumu</td></tr>
-          <tr><td>Bölge</td><td>Region</td><td>Coğrafi bulut alanı</td></tr>
-          <tr><td>Erişim noktası</td><td>Availability zone</td><td>İzole kaynak grubu</td></tr>
-          <tr><td>Şifreleme</td><td>Encryption</td><td>Verinin korunması</td></tr>
-          <tr><td>Yedekleme</td><td>Backup</td><td>Veri kopyası</td></tr>
-          <tr><td>Kurtarma süresi</td><td>RTO / RPO</td><td>Süre / veri kaybı sınırı</td></tr>
+          <tr><td>HIPAA</td><td>ABD’de PHI işleyen kapsam</td><td>BAA, denetim kaydı, şifreleme kanıtı</td></tr>
+          <tr><td>GDPR</td><td>AB’deki veri sahiplerinin kişisel verisi</td><td>DPA, standart sözleşme maddeleri, veri ikametgahı, silme süreci</td></tr>
+          <tr><td>KVKK</td><td>Türkiye’deki kişisel veriler</td><td>Veri işleyen sözleşmesi, yurt dışına aktarım şartları, aydınlatma metni</td></tr>
+          <tr><td>SOC 2</td><td>Hizmet organizasyonu kontrolleri</td><td>Güncel SOC 2 Type II raporu ve kapsam dokümanı</td></tr>
+          <tr><td>ISO 27001</td><td>Bilgi güvenliği yönetim sistemi</td><td>Sertifika kapsamı ve geçerlilik tarihi</td></tr>
         </tbody>
       </table>
     </div>
-    <h2 class="reveal" style="margin-top:24px">Kaynaklar</h2>
-    <div class="resources reveal">
-      <a class="resource" href="https://aws.amazon.com/learn/" target="_blank" rel="noopener">AWS Learn</a>
-      <a class="resource" href="https://learn.microsoft.com/" target="_blank" rel="noopener">Microsoft Learn</a>
-      <a class="resource" href="https://cloud.google.com/docs" target="_blank" rel="noopener">Google Cloud Docs</a>
-      <a class="resource" href="https://www.nist.gov/publications/nist-sp-800-145" target="_blank" rel="noopener">NIST SP 800-145</a>
-      <a class="resource" href="https://github.com/topics/cloud-computing" target="_blank" rel="noopener">GitHub Topics</a>
+    <p class="note">Uyumluluk, sağlayıcının sertifikasıyla bitmez: yapılandırmanız, erişim politikanız ve eğitiminiz denetimin konusudur.</p>
+
+    <h3 style="margin-top:28px">Sahada altı kural</h3>
+    <ul class="checklist">
+      <li>Kişisel telefona hasta fotoğrafı veya belgesi indirmeyin.</li>
+      <li>Paylaşım bağlantılarına süre ve şifre koyun; süresi dolan bağlantıyı yeniden kullanmayın.</li>
+      <li>Her cihazda ekran kilidi ve disk şifrelemesi açık olsun.</li>
+      <li>Vardiya sonunda açık oturumları kapatın; ortak tablette “beni hatırla” kullanmayın.</li>
+      <li>Kayıp veya çalıntı cihazı hemen bildirin; uzaktan oturum kapatma prosedürü yazılı olsun.</li>
+      <li>Şüpheli e-posta ve bağlantıları bildirin; tıbbi aciliyet baskısıyla kimlik bilgisi paylaşmayın.</li>
+    </ul>
+  </section>
+
+  <!-- ================= DAYANIKLILIK ================= -->
+  <section class="page" id="panel-dayaniklilik" role="tabpanel" aria-labelledby="tab-dayaniklilik" tabindex="0" hidden>
+    <h2>Dayanıklılık ve süreklilik</h2>
+    <p class="lead">Kesinti planı, “sistem çökerse ne yaparız?” sorusundan önce “hangi hizmet kaç dakika durabilir?” sorusuyla başlar. İki sayı tüm mimariyi belirler: RTO ve RPO.</p>
+
+    <div class="grid grid-2">
+      <article class="card">
+        <span class="kicker">RTO</span>
+        <h3>Kurtarma süresi hedefi</h3>
+        <p>Kesintinin başlamasından hizmetin yeniden çalışmasına kadar geçen azami süre. “Bir saate kadar kapalı kalabiliriz” gibi ölçülebilir bir cümle olmalıdır.</p>
+      </article>
+      <article class="card">
+        <span class="kicker">RPO</span>
+        <h3>Kurtarma noktası hedefi</h3>
+        <p>Kabul edilebilir azami veri kaybı; yani son geçerli yedeğin ne kadar eski olabileceği. Sevk kaydı için beş dakika ile yirmi dört saat arasındaki fark, maliyeti katlar.</p>
+      </article>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <h3>3-2-1 yedek kuralı</h3>
+      <div class="grid grid-3" style="margin-top:12px">
+        <div><strong>3</strong><p>Verinin en az üç kopyası bulunsun.</p></div>
+        <div><strong>2</strong><p>En az iki farklı ortam veya sağlayıcı kullanılsın.</p></div>
+        <div><strong>1</strong><p>Bir kopya çevrimdışı veya değiştirilemez (immutable) olsun; fidye yazılımı ona ulaşamasın.</p></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px">Kurtarma desenleri</h3>
+    <div class="table-wrap">
+      <table>
+        <caption>Tipik süreler; gerçek değerler tasarıma ve teste göre değişir</caption>
+        <thead>
+          <tr><th scope="col">Desen</th><th scope="col">Tipik RTO</th><th scope="col">Maliyet</th><th scope="col">Ne zaman uygun?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Backup &amp; restore</td><td>Saatler</td><td>Düşük</td><td>İç raporlama, arşiv, eğitim ortamı</td></tr>
+          <tr><td>Pilot light</td><td>10–60 dakika</td><td>Düşük–orta</td><td>Sevk dışı destek sistemleri</td></tr>
+          <tr><td>Warm standby</td><td>Dakikalar</td><td>Orta–yüksek</td><td>Sevk ve triyaj akışı</td></tr>
+          <tr><td>Active-active</td><td>Saniyeler</td><td>Yüksek</td><td>Kesintisi kabul edilemeyen kritik servisler</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cols">
+      <div class="panel">
+        <h3>Saha sürekliliği</h3>
+        <ul class="tick good">
+          <li>Çevrimdışı mod: kayıt yerelde kuyruğa alınır, bağlantı gelince gönderilir.</li>
+          <li>Kağıt form yedeği: hangi bilgilerin elle tutulacağı önceden belirlenir.</li>
+          <li>Çakışma kuralı: aynı kayıt iki cihazda düzenlenirse hangisi kazanır?</li>
+          <li>Vardiya devrinde senkronizasyon kontrolü ve eksik kayıt taraması.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Test edilmedik plan, plan değildir</h3>
+        <ul class="checklist warn" style="margin-top:10px">
+          <li>Üç ayda bir geri yükleme tatbikatı yapın ve süreyi ölçün.</li>
+          <li>Ölçülen RTO/RPO’yu hedefle karşılaştırın; sapmayı raporlayın.</li>
+          <li>Kesinti anında aranacak kişileri ve karar yetkisini yazın.</li>
+          <li>Sağlayıcı kesintisi senaryosunu ayrıca çalışın.</li>
+        </ul>
+      </div>
     </div>
   </section>
+
+  <!-- ================= MALİYET ================= -->
+  <section class="page" id="panel-maliyet" role="tabpanel" aria-labelledby="tab-maliyet" tabindex="0" hidden>
+    <h2>Maliyet ve FinOps</h2>
+    <p class="lead">Bulut faturası, mimari kararların aynasıdır. FinOps, harcamayı kısmak değil; görünür kılmak, doğru kaynağı doğru işe vermek ve kararı kanıtla vermektir.</p>
+
+    <div class="grid grid-3">
+      <article class="card"><h3>Kullandıkça öde</h3><p>Sabit sunucu maliyeti yerine kullanım. Ancak ölçülmeyen kullanım, kontrolsüz harcamaya dönüşür.</p></article>
+      <article class="card"><h3>Rightsizing</h3><p>Fazla büyük sanal sunucu ve veritabanı, en yaygın israf kalemidir. Kullanım metrikleriyle boyutlandırın.</p></article>
+      <article class="card"><h3>Etiketleme</h3><p>Her kaynakta ortam, sahip ve proje etiketi olsun. Etiketsiz kaynak, sahipsiz maliyettir.</p></article>
+      <article class="card"><h3>Bütçe ve uyarı</h3><p>Aylık bütçe ve eşik uyarısı kurun. Sürpriz fatura, genelde uyarı olmadığı için sürprizdir.</p></article>
+      <article class="card"><h3>Veri çıkışı (egress)</h3><p>Sağlayıcılar arası transfer ve kullanıcıya indirme ücretlidir. Mimariyi aynı bölgede tutmak maliyeti düşürür.</p></article>
+      <article class="card"><h3>Taahhüt ve spot</h3><p>Kararlı iş yükleri için rezerve kapasite, kesilebilir işler için spot kullanın; kritik sevk akışını spot’a bırakmayın.</p></article>
+    </div>
+
+    <h3 style="margin-top:28px">Sürpriz maliyet nereden gelir?</h3>
+    <div class="table-wrap">
+      <table>
+        <caption>Kalem, neden sürpriz olur, nasıl kontrol edilir</caption>
+        <thead>
+          <tr><th scope="col">Kalem</th><th scope="col">Sürpriz nedeni</th><th scope="col">Kontrol</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Egress</td><td>Sağlayıcılar arası kopyalama ve dışa aktarım</td><td>Hacmi ölçün, veriyi tek bölgede tutun</td></tr>
+          <tr><td>Boşta kaynak</td><td>Kapatılmayan test ve demo ortamları</td><td>Zamanlanmış kapatma, etiket denetimi</td></tr>
+          <tr><td>Yedek saklama</td><td>Uzun saklama süresi ve sık snapshot</td><td>Yaşam döngüsü politikası tanımlayın</td></tr>
+          <tr><td>Yönetilen hizmetler</td><td>Kolay kurulum, yüksek birim fiyat</td><td>Toplam sahip olma maliyetini karşılaştırın</td></tr>
+          <tr><td>Lisanslama</td><td>Yanlış lisans modeli, çift ödeme</td><td>Mevcut kurumsal lisansları (BYOL) değerlendirin</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <h3>FinOps döngüsü</h3>
+      <div class="grid grid-3" style="margin-top:10px">
+        <div><span class="kicker">1</span><strong>Görünürlük</strong><p>Etiket, rapor ve sahiplik. Neyin ne kadar harcadığını bilmeden optimize edemezsiniz.</p></div>
+        <div><span class="kicker">2</span><strong>Optimizasyon</strong><p>Rightsizing, boşta kaynağı kapatma, doğru depolama sınıfı, taahhüt planlaması.</p></div>
+        <div><span class="kicker">3</span><strong>Yönetişim</strong><p>Bütçe, onay akışı, mimari standartları ve aylık maliyet incelemesi.</p></div>
+      </div>
+    </div>
+
+    <ul class="checklist">
+      <li>Her ortam ve proje etiketli mi?</li>
+      <li>Aylık bütçe ve eşik uyarısı tanımlı mı?</li>
+      <li>Kullanılmayan kaynaklar için düzenli tarama yapılıyor mu?</li>
+      <li>Yedek saklama süresi ve silme politikası yazılı mı?</li>
+      <li>Yeni bir hizmet eklenmeden önce toplam sahip olma maliyeti hesaplanıyor mu?</li>
+    </ul>
+  </section>
+
+  <!-- ================= SÖZLÜK ================= -->
+  <section class="page" id="panel-sozluk" role="tabpanel" aria-labelledby="tab-sozluk" tabindex="0" hidden>
+    <h2>Sözlük</h2>
+    <p class="lead">Metinde geçen terimlerin kısa karşılıkları. İngilizce terim korunur; sözleşme ve dokümanlarda çoğunlukla bu haliyle geçer.</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Türkçe karşılık, İngilizce terim ve kısa anlam</caption>
+        <thead>
+          <tr><th scope="col">Türkçe</th><th scope="col">İngilizce</th><th scope="col">Kısa anlam</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bulut bilişim</td><td>Cloud computing</td><td>İnternet üzerinden sunulan, ölçülen bilişim hizmeti</td></tr>
+          <tr><td>Bölge</td><td>Region</td><td>Bir veya daha fazla veri merkezini kapsayan coğrafi alan</td></tr>
+          <tr><td>Kullanılabilirlik bölgesi</td><td>Availability zone (AZ)</td><td>Bölge içinde izole edilmiş kaynak grubu</td></tr>
+          <tr><td>Uç nokta</td><td>Edge location</td><td>Kullanıcıya yakın önbellek ve dağıtım noktası</td></tr>
+          <tr><td>Gecikme</td><td>Latency</td><td>İstek ile yanıt arasında geçen süre</td></tr>
+          <tr><td>Çok kiracılılık</td><td>Multi-tenancy</td><td>Aynı altyapının mantıksal olarak ayrılmış müşterilere sunulması</td></tr>
+          <tr><td>Esneklik</td><td>Elasticity</td><td>Talebe göre otomatik kapasite artışı ve azalışı</td></tr>
+          <tr><td>Hizmet düzeyi anlaşması</td><td>SLA</td><td>Sağlayıcının taahhüt ettiği kullanılabilirlik ve tazminat</td></tr>
+          <tr><td>Kimlik ve erişim yönetimi</td><td>IAM</td><td>Kullanıcı ve rol bazlı yetkilendirme</td></tr>
+          <tr><td>Aktarımda şifreleme</td><td>Encryption in transit</td><td>Verinin ağ üzerinde TLS ile korunması</td></tr>
+          <tr><td>Durgun halde şifreleme</td><td>Encryption at rest</td><td>Disk veya nesne depolamada şifreleme</td></tr>
+          <tr><td>Kişisel sağlık verisi</td><td>PHI</td><td>Bir kişiyle ilişkilendirilebilen sağlık verisi</td></tr>
+          <tr><td>Kişisel veri</td><td>PII</td><td>Kimliği belirlenebilir kişiye ait veri</td></tr>
+          <tr><td>Yedekleme</td><td>Backup / snapshot</td><td>Geri dönüş için alınan veri kopyası</td></tr>
+          <tr><td>Kurtarma süresi hedefi</td><td>RTO</td><td>Kesintiden sonra azami kabul edilebilir süre</td></tr>
+          <tr><td>Kurtarma noktası hedefi</td><td>RPO</td><td>Kabul edilebilir azami veri kaybı</td></tr>
+          <tr><td>Satıcıya bağımlılık</td><td>Vendor lock-in</td><td>Sağlayıcı değiştirme maliyetinin yükselmesi</td></tr>
+          <tr><td>Bulut maliyet yönetimi</td><td>FinOps</td><td>Harcamayı görünür ve yönetilebilir kılma pratiği</td></tr>
+          <tr><td>Veri işleme sözleşmesi</td><td>BAA / DPA</td><td>Sağlık verisi (BAA) veya kişisel veri (DPA) için işleme sözleşmesi</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 style="margin-top:34px">Kaynaklar</h2>
+    <p class="lead">Kavramları doğrulamak için birincil kaynaklar. Bağlantılar yeni sekmede açılır.</p>
+    <div class="resources">
+      <a class="resource" href="https://aws.amazon.com/cloud-computing/" target="_blank" rel="noopener noreferrer">AWS Bulut Bilişim<small>aws.amazon.com</small></a>
+      <a class="resource" href="https://learn.microsoft.com/training/azure/" target="_blank" rel="noopener noreferrer">Microsoft Learn<small>Azure temelleri</small></a>
+      <a class="resource" href="https://cloud.google.com/docs" target="_blank" rel="noopener noreferrer">Google Cloud Docs<small>cloud.google.com</small></a>
+      <a class="resource" href="https://csrc.nist.gov/pubs/sp/800/145/final" target="_blank" rel="noopener noreferrer">NIST SP 800-145<small>Bulut tanımı</small></a>
+      <a class="resource" href="https://www.hhs.gov/hipaa/index.html" target="_blank" rel="noopener noreferrer">HHS / HIPAA<small>ABD sağlık verisi</small></a>
+      <a class="resource" href="https://www.kvkk.gov.tr/" target="_blank" rel="noopener noreferrer">KVKK<small>Türkiye mevzuatı</small></a>
+      <a class="resource" href="https://github.com/Flynntaggart26/cloud-paramedic-portfolio/tree/main/docs" target="_blank" rel="noopener noreferrer">Kaynak notlar<small>docs/ klasörü</small></a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  <div class="container">© 2026 CloudMed Atlas Pro — MIT License</div>
+  <div class="container footer-inner">
+    <span>© 2026 CloudMed — MIT License · Eğitim amaçlıdır; tıbbi veya hukuki tavsiye değildir.</span>
+    <a href="https://github.com/Flynntaggart26/cloud-paramedic-portfolio" target="_blank" rel="noopener noreferrer">GitHub deposu</a>
+  </div>
 </footer>
 
+<noscript>
+  <style>.page[hidden]{display:block!important}.tabs{display:none}.page{animation:none}</style>
+</noscript>
+
 <script>
-const clouds = [
-  {name:'Stratus', min:0, max:2000, els:['.c1']},
-  {name:'Stratocumulus', min:0, max:2000, els:['.c4']},
-  {name:'Cumulus', min:1000, max:2000, els:['.c2']},
-  {name:'Nimbostratus', min:0, max:3000, els:['.c1']},
-  {name:'Altocumulus', min:2000, max:6000, els:['.c4']},
-  {name:'Altostratus', min:2000, max:6000, els:['.c2']},
-  {name:'Cirrus', min:5000, max:13000, els:['.c3']},
-  {name:'Cirrocumulus', min:5000, max:12000, els:['.c5']},
-  {name:'Cirrostratus', min:5000, max:13000, els:['.c3']},
-  {name:'Cumulonimbus', min:0, max:12000, els:['.c2','.c3']}
-];
-const alt = document.getElementById('alt');
-const altNum = document.getElementById('altNum');
-const altVal = document.getElementById('altVal');
-const cloudInfo = document.getElementById('cloudInfo');
-function update(value){
-  altVal.textContent = value + ' m';
-  const active = clouds.filter(c => value >= c.min && value <= c.max).map(c=>c.name);
-  document.querySelectorAll('.cloud').forEach(c=>{c.style.opacity='0.12';c.style.transform='scale(0.8)'});
-  active.forEach(name => {
-    const cloud = clouds.find(c=>c.name===name);
-    cloud.els.forEach(sel => {
-      const el = document.querySelector(sel);
-      if (el){ el.style.opacity='0.95'; el.style.transform='scale(1)'; }
+(function () {
+  "use strict";
+
+  /* ---------- Sekmeler: ARIA + klavye + URL hash yönlendirmesi ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  var panels = {};
+  tabs.forEach(function (tab) {
+    panels[tab.dataset.slug] = document.getElementById(tab.getAttribute("aria-controls"));
+  });
+
+  var slugs = tabs.map(function (tab) { return tab.dataset.slug; });
+
+  function show(slug, options) {
+    if (slugs.indexOf(slug) === -1) return;
+    var opts = options || {};
+    tabs.forEach(function (tab) {
+      var selected = tab.dataset.slug === slug;
+      tab.setAttribute("aria-selected", selected ? "true" : "false");
+      tab.tabIndex = selected ? 0 : -1;
+      panels[tab.dataset.slug].hidden = !selected;
+      if (selected && opts.focusTab) tab.focus();
+      if (selected) tab.scrollIntoView({ block: "nearest", inline: "center" });
+    });
+    if (opts.push !== false) {
+      if (history.pushState) history.pushState({ slug: slug }, "", "#" + slug);
+      else location.hash = slug;
+    }
+    if (opts.scroll !== false) {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    }
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      show(tab.dataset.slug, { focusTab: false });
+    });
+
+    tab.addEventListener("keydown", function (event) {
+      var index = slugs.indexOf(tab.dataset.slug);
+      var next = null;
+      if (event.key === "ArrowRight") next = (index + 1) % slugs.length;
+      else if (event.key === "ArrowLeft") next = (index - 1 + slugs.length) % slugs.length;
+      else if (event.key === "Home") next = 0;
+      else if (event.key === "End") next = slugs.length - 1;
+      if (next === null) return;
+      event.preventDefault();
+      show(slugs[next], { focusTab: true, scroll: false });
     });
   });
-  cloudInfo.textContent = active.length ? active.join(', ') + ' bulutları bu rakımda görülebilir.' : 'Bu rakımda belirgin bir bulut türü yok.';
-}
-alt.addEventListener('input', e => { altNum.value=e.target.value; update(Number(e.target.value)); });
-altNum.addEventListener('input', e => { alt.value=e.target.value; update(Number(e.target.value)); });
-update(Number(alt.value));
 
-const tabs = document.querySelectorAll('.tab');
-const pages = document.querySelectorAll('.page');
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    pages.forEach(p=>p.classList.remove('active'));
-    document.getElementById(tab.dataset.page).classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-});
-document.querySelectorAll('[data-go]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.getAttribute('data-go');
-    const tab = document.querySelector(`.tab[data-page="${target}"]`);
-    if (tab) tab.click();
-  });
-});
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, {threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function fromHash() {
+    var slug = (location.hash || "").replace(/^#/, "");
+    if (slugs.indexOf(slug) !== -1) show(slug, { push: false });
+  }
+
+  window.addEventListener("hashchange", fromHash);
+  window.addEventListener("popstate", fromHash);
+  fromHash();
+
+  /* ---------- Dağıtım karar simülatörü ---------- */
+  var SCORES = {
+    phi:          { public: -3, private: 3, hybrid: 2, multi: 1 },
+    internal:     { public: 2, private: 1, hybrid: 2, multi: 1 },
+    open:         { public: 3, private: -2, hybrid: 0, multi: 1 },
+    "offline-yes":  { public: -1, private: 1, hybrid: 3, multi: 1 },
+    "offline-some": { public: 1, private: 0, hybrid: 2, multi: 1 },
+    "offline-no":   { public: 2, private: 1, hybrid: 0, multi: 2 },
+    "ops-low":  { public: 2, private: -3, hybrid: -2, multi: -1 },
+    "ops-mid":  { public: 1, private: 0, hybrid: 2, multi: 2 },
+    "ops-high": { public: 0, private: 3, hybrid: 1, multi: 1 }
+  };
+
+  var MODELS = {
+    public: {
+      label: "Public Cloud",
+      why: "Hızlı kurulum ve düşük sabit maliyet öne çıkıyor; yönetilen hizmetler operasyon yükünü azaltır.",
+      caution: "PHI varsa sağlayıcıyla BAA/DPA imzalayın; bölge seçimini ve şifreleme ayarlarını yazılı doğrulayın.",
+      score: 9
+    },
+    private: {
+      label: "Private Cloud",
+      why: "Kontrol ve izolasyon ihtiyacı, maliyet ve uzman gereksiniminden daha ağır basıyor.",
+      caution: "Donanım, yedeklilik ve 7/24 uzmanlık toplam sahip olma maliyetini hızla yükseltir.",
+      score: 9
+    },
+    hybrid: {
+      label: "Hybrid Cloud",
+      why: "Hassas veri içeride kalırken esnek işlem gücü dışarıdan alınabiliyor; sahadaki kesinti riskine en uygun denge.",
+      caution: "Ağ bağlantısı ve kimlik federasyonu tek hata noktasına dönüşebilir; bant genişliğini ve yedeği planlayın.",
+      score: 9
+    },
+    multi: {
+      label: "Multi-Cloud",
+      why: "Sağlayıcıya bağımlılığı azaltmak ve hizmet bazlı seçim yapmak mümkün.",
+      caution: "Her sağlayıcı için ayrı uyumluluk kanıtı ve veri çıkışı maliyeti gerekir; operasyon yükü artar.",
+      score: 9
+    }
+  };
+
+  var REASONS = {
+    phi: "Hasta verisi (PHI) işliyorsunuz: şifreleme, işleme sözleşmesi ve erişim kontrolü pazarlık konusu değil.",
+    internal: "İç veri PHI içermiyor; yine de erişim kontrolü ve yedekleme gerekir.",
+    open: "Herkese açık içerik: uyumluluk yükü düşük, bu yüzden hız ve maliyet belirleyici.",
+    "offline-yes": "Sahada bağlantı kesilebiliyor: çevrimdışı çalışma ve yerel kuyruk zorunlu.",
+    "offline-some": "Kısa kesinti kabul edilebilir; yine de kontrollü bir geri dönüş planı gerekir.",
+    "offline-no": "Kesinti toleransı yok: yedeklilik ve otomatik devreye alma planlanmalı.",
+    "ops-low": "Küçük ekip ve düşük bütçe: yönetilen hizmetler ve dış operasyon desteği öne çıkar.",
+    "ops-mid": "Sınırlı teknik kapasite var: yönetilen hizmetlerle karmaşıklığı sınırlayın.",
+    "ops-high": "Veri merkezi ve uzman ekip mevcut: kontrolü elde tutmak gerçekçi bir seçenek."
+  };
+
+  var form = document.getElementById("simForm");
+  var result = document.getElementById("simResult");
+
+  function selectedAnswers() {
+    var answers = {};
+    ["data", "offline", "ops"].forEach(function (name) {
+      var checked = form.querySelector('input[name="' + name + '"]:checked');
+      if (checked) answers[name] = checked.value;
+    });
+    return answers;
+  }
+
+  function render() {
+    var answers = selectedAnswers();
+    var keys = Object.keys(answers);
+    if (keys.length < 3) {
+      result.innerHTML = '<p class="result-hint">Öneriyi görmek için üç soruyu da yanıtlayın. Şu an ' +
+        keys.length + '/3 yanıtlandı.</p>';
+      return;
+    }
+
+    var scores = { public: 0, private: 0, hybrid: 0, multi: 0 };
+    keys.forEach(function (name) {
+      var row = SCORES[answers[name]];
+      Object.keys(scores).forEach(function (model) { scores[model] += row[model]; });
+    });
+
+    var ranked = Object.keys(scores).sort(function (a, b) {
+      if (scores[b] !== scores[a]) return scores[b] - scores[a];
+      return ["hybrid", "private", "public", "multi"].indexOf(a) -
+             ["hybrid", "private", "public", "multi"].indexOf(b);
+    });
+    var best = MODELS[ranked[0]];
+
+    var reasons = keys.map(function (name) {
+      return "<li>" + REASONS[answers[name]] + "</li>";
+    }).join("");
+
+    var bars = ranked.map(function (model) {
+      var value = Math.max(0, scores[model]);
+      var percent = Math.round((value / MODELS[model].score) * 100);
+      return '<div class="score' + (model === ranked[0] ? " top" : "") + '">' +
+        '<span class="score-name">' + MODELS[model].label + '</span>' +
+        '<span class="score-bar"><span style="width:' + percent + '%"></span></span>' +
+        '<span class="score-val">' + scores[model] + '</span></div>';
+    }).join("");
+
+    result.innerHTML =
+      '<div class="result-head"><span class="tag">Öneri</span><strong>' + best.label + '</strong></div>' +
+      '<p style="margin-top:8px">' + best.why + '</p>' +
+      '<ul>' + reasons + '<li><strong>Dikkat:</strong> ' + best.caution + '</li></ul>' +
+      '<div class="scores">' + bars + '</div>';
+  }
+
+  if (form && result) {
+    form.addEventListener("change", render);
+    form.addEventListener("submit", function (event) { event.preventDefault(); });
+    render();
+  }
+})();
 </script>
 </body>
 </html>

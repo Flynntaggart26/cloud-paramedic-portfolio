@@ -1,26 +1,35 @@
-# Cloud Computing Basics
+# Bulut Bilişimin Temelleri
 
-## What is cloud computing?
-Cloud computing is using computing services over the internet instead of owning physical servers locally. In the healthcare context, this can mean web portals, e-mail, patient records systems, dispatch apps, and remote monitoring services.
+## Bulut bilişim nedir?
 
-## Main characteristics (NIST SP 800-145)
-1. On-demand self-service  
-2. Broad network access  
-3. Resource pooling  
-4. Rapid elasticity  
-5. Measured service  
+Bulut bilişim, bilişim hizmetlerini yerel donanıma sahip olmak yerine internet üzerinden kullanmaktır. Sağlık bağlamında bu; web portalları, e-posta, hasta kayıt sistemleri, sevk uygulamaları ve uzaktan izleme hizmetleri anlamına gelebilir.
 
-## Why it matters for a paramedic
-Instead of storing everything on one local device, a cloud-based workflow can sync information across a vehicle tablet, dispatch, hospital, and documentation system. That creates convenience and speed, but also means patient data leaves the ambulance.
+## Temel özellikler (NIST SP 800-145)
 
-## English reading list
-- AWS: `aws.amazon.com/cloud-computing/`
-- Microsoft Learn: “Introduction to cloud computing”
-- Google Cloud: `cloud.google.com/learn/what-is-cloud-computing`
-- Wikipedia: `Cloud computing`
-- NIST SP 800-145: “The NIST Definition of Cloud Computing”
+1. **Talep üzerine self-servis** — Kaynağı kullanıcı kendisi talep eder; sipariş, kargo ve kurulum beklemez.
+2. **Geniş ağ erişimi** — Hizmete tablet, telefon ve dizüstü bilgisayardan standart protokollerle erişilir.
+3. **Kaynak havuzu** — Sağlayıcı donanımını çok kiracılı bir havuzdan sunar; mantıksal izolasyon müşterinin sorumluluğundadır.
+4. **Hızlı esneklik** — Talep arttığında kapasite büyür, azaldığında küçülür.
+5. **Ölçülen hizmet** — Kullanım ölçülür ve faturalanır; ölçüm olmadan maliyet kontrolü olmaz.
 
-## Simple mental model
-- **Online only** = service is delivered via the internet.
-- **Vendor-managed** = the provider controls hardware, software, and networking.
-- **Pay-as-you-go** = you pay for what you use, not for physical data centers.
+## Paramedik için neden önemli?
+
+Her şeyi tek bir yerel cihazda tutmak yerine bulut tabanlı bir iş akışı, bilgiyi araç tabletinde, sevk merkezinde, hastanede ve dokümantasyon sisteminde eşzamanlı tutabilir. Bu hız ve süreklilik sağlar; ancak hasta verisinin ambulansın dışına çıktığı anlamına da gelir.
+
+Bu yüzden iki soru birlikte sorulmalıdır: *"Bu akış bize ne kazandırıyor?"* ve *"Bu akış hangi veriyi, nereye, kimin erişimine açıyor?"*
+
+## İngilizce okuma listesi
+
+- AWS — `aws.amazon.com/cloud-computing/`
+- Microsoft Learn — "Introduction to cloud computing"
+- Google Cloud — `cloud.google.com/learn/what-is-cloud-computing`
+- NIST SP 800-145 — "The NIST Definition of Cloud Computing"
+- Wikipedia — "Cloud computing"
+
+## Basit zihinsel model
+
+- **Yalnızca çevrimiçi** = hizmet internet üzerinden sunulur.
+- **Sağlayıcı yönetir** = donanım, yazılım ve ağ sağlayıcının kontrolündedir.
+- **Kullandığın kadar öde** = fiziksel veri merkezi yerine kullanım için ödeme yapılır.
+
+Üç maddeyi birlikte düşünmek gerekir: yalnızca çevrimiçi olması tek başına bir bulut tanımı değildir.

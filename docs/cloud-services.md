@@ -1,29 +1,39 @@
-# Cloud Service Models
+# Bulut Servis Modelleri
+
+Servis modeli, "ne alıyorum ve neyi yönetiyorum?" sorusunun cevabıdır. Model yükseldikçe sağlayıcı daha fazla iş üstlenir; kontrol ve esneklik azalır.
 
 ## IaaS (Infrastructure as a Service)
-You get virtual machines, storage, and networks.  
-Example: launching a server for a dispatch web app.
+
+Sanal sunucu, disk ve ağ alırsınız; işletim sistemi, yama ve uygulamayı siz yönetirsiniz.
+**Örnek:** Özel entegrasyon gerektiren sevk uygulamasının barındırılması.
 
 ## PaaS (Platform as a Service)
-You get a development platform where you write code but the provider runs the infrastructure.  
-Example: creating a small internal reporting app.
+
+Çalışma zamanı, dağıtım hattı ve yönetilen veritabanı bağlantısı alırsınız; kod ve yapılandırma sizde kalır.
+**Örnek:** Triyaj formu API'si veya iç raporlama servisi.
 
 ## SaaS (Software as a Service)
-Ready-to-use software delivered over the internet.  
-Example: e-mail, dispatch console, or a local health workstation app.
+
+Kullanıma hazır yazılım alırsınız; kullanıcı, rol ve veri girişi kurallarını yönetirsiniz.
+**Örnek:** E-posta, ekip takvimi, hazır klinik uygulama.
 
 ## FaaS / Serverless (Function as a Service)
-Code runs only when an event happens.  
-Example: send a notification when a new ambulance status is submitted.
 
-## DBAAS (Database as a Service)
-Managed database service.  
-Example: structured patient report storage with backups and access limits.
+Kod yalnızca bir olay gerçekleştiğinde çalışır; sunucu yönetimi yoktur.
+**Örnek:** Yeni sevk kaydı geldiğinde otomatik bildirim gönderilmesi.
 
-## Daas (Desktop as a Service)
-Virtual desktop for remote work.  
-Example: shared training or field documentation workstation.
+## DBaaS (Database as a Service)
 
-## How to choose
-- Start with SaaS for everyday clinical/dispatch tools.
-- Use PaaS/IaaS only when you need custom integrations, technical control, or advanced telemetry.
+Yönetilen veritabanı hizmetidir; yedekleme, yama ve ölçekleme sağlayıcıda, şema ve yetkilendirme sizde.
+**Örnek:** Yedekli hasta kayıt ve rapor verisi.
+
+## DaaS (Desktop as a Service)
+
+Sanal masaüstü hizmetidir; uygulamalar merkezden yönetilir.
+**Örnek:** Ortak saha dokümantasyon istasyonu.
+
+## Nasıl seçilir?
+
+- Günlük klinik ve sevk araçları için SaaS ile başlayın.
+- Özel entegrasyon, teknik kontrol veya ayrıntılı telemetri gerekiyorsa PaaS/IaaS değerlendirin.
+- Hangi modeli seçerseniz seçin; kimlik ve erişim yönetimi, veri sınıflandırması ve yedek doğrulaması müşteride kalır.

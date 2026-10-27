@@ -1,21 +1,31 @@
-# Cloud Deployment Models
+# Bulut Dağıtım Modelleri
 
-## Public cloud
-Fast, cheap, and easy. A provider like AWS, Azure, or Google Cloud serves multiple customers. Good for small projects and learning.
+## Public cloud (herkese açık bulut)
 
-## Private cloud
-Dedicated to one organization. Higher cost and more control. Good for sensitive patient data or internal compliance requirements.
+Hızlı, düşük sabit maliyetli ve öğrenmesi kolaydır. AWS, Azure veya Google Cloud birden fazla müşteriye aynı altyapı havuzundan hizmet verir. Küçük projeler, eğitim ortamları ve standart iş yükleri için uygundur.
 
-## Hybrid cloud
-Mixes on-premises and public cloud. Useful when some work must stay local but heavy processing can use the public cloud.
+Hasta verisi işlenecekse sağlayıcıyla veri işleme sözleşmesi (BAA/DPA) imzalanmalı, bölge seçimi ve şifreleme ayarları yazılı olarak doğrulanmalıdır.
 
-## Community cloud
-Shared by organizations with similar needs (for example health, emergency response, or public administration).
+## Private cloud (özel bulut)
 
-## Multi-cloud
-Uses two or more providers. Reduces single-provider lock-in but increases management and transfer complexity.
+Tek bir kuruma ayrılmış ortamdır. Daha yüksek maliyet, daha yüksek kontrol sağlar. Hassas hasta verisi veya katı iç uyumluluk gereksinimleri olduğunda değerlendirilir.
 
-## Practical rule for field health teams
-- Day-to-day tools: SaaS/Public.
-- Sensitive workflows: keep data locally until you have a vendor agreement and a risk review.
-- Backup and continuity: before choosing a platform, confirm backup, failover, and recovery.
+Özel bulut, fiziksel olarak kurum içinde olmak zorunda değildir; önemli olan kaynağın tek kiracıya ayrılmış olmasıdır.
+
+## Hybrid cloud (hibrit bulut)
+
+Kurum içi (on-premises) altyapı ile public cloud'u birlikte kullanır. Bazı işler yerelde kalmak zorundayken ağır işlem gücü dışarıdan alınabilir. Sağlıkta en yaygın desendir; entegrasyon ve kimlik yönetimi karmaşıklığı artar.
+
+## Community cloud (topluluk bulutu)
+
+Benzer ihtiyaçları olan kurumların (afet sağlık ağı, 112 yapısı, kamu hastaneleri) paylaştığı ortamdır. Maliyet paylaşılır, yönetişim ve sorumluluklar ortak kurulur.
+
+## Multi-cloud (çoklu bulut)
+
+İki veya daha fazla sağlayıcı kullanılır. Tek sağlayıcıya bağımlılığı azaltır; yönetim, uyumluluk kanıtı ve veri transferi maliyetini artırır.
+
+## Saha ekipleri için pratik kural
+
+- Günlük araçlar (e-posta, takvim, dokümantasyon): SaaS + public cloud.
+- Hassas iş akışları: sözleşme ve risk değerlendirmesi tamamlanana kadar veriyi yerelde tutun.
+- Yedeklilik ve süreklilik: platform seçmeden önce yedekleme, devreye alma ve geri dönüş senaryosunu yazılı olarak doğrulayın.
